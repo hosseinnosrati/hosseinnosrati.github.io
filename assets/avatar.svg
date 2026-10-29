@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="avatarBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="96" fill="url(#avatarBg)" stroke="#38bdf8" stroke-width="4"/>
+  <!-- Head & Shoulders silhouette -->
+  <circle cx="100" cy="75" r="38" fill="#ffffff" opacity="0.95"/>
+  <path d="M 35 170 C 45 125, 155 125, 165 170 Z" fill="#ffffff" opacity="0.95"/>
+  <text x="100" y="85" fill="#0369a1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="700" text-anchor="middle">HN</text>
+</svg>

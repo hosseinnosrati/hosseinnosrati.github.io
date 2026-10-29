@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgAudio" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="50%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="240" rx="12" fill="url(#bgAudio)"/>
+  <!-- Frequency Bars / Spectrum -->
+  <g fill="#334155" opacity="0.4">
+    <rect x="30" y="160" width="12" height="40" rx="3"/>
+    <rect x="50" y="140" width="12" height="60" rx="3"/>
+    <rect x="70" y="110" width="12" height="90" rx="3"/>
+    <rect x="90" y="80" width="12" height="120" rx="3"/>
+    <rect x="110" y="95" width="12" height="105" rx="3"/>
+    <rect x="130" y="120" width="12" height="80" rx="3"/>
+    <rect x="150" y="150" width="12" height="50" rx="3"/>
+    <rect x="170" y="130" width="12" height="70" rx="3"/>
+    <rect x="190" y="100" width="12" height="100" rx="3"/>
+    <rect x="210" y="70" width="12" height="130" rx="3"/>
+    <rect x="230" y="90" width="12" height="110" rx="3"/>
+    <rect x="250" y="115" width="12" height="85" rx="3"/>
+    <rect x="270" y="140" width="12" height="60" rx="3"/>
+    <rect x="290" y="125" width="12" height="75" rx="3"/>
+    <rect x="310" y="95" width="12" height="105" rx="3"/>
+    <rect x="330" y="135" width="12" height="65" rx="3"/>
+    <rect x="350" y="165" width="12" height="35" rx="3"/>
+  </g>
+  <!-- Adaptive NLMS Filter Curve -->
+  <path d="M 25 120 Q 80 40 140 120 T 260 120 T 380 120" fill="none" stroke="url(#waveGrad)" stroke-width="3" stroke-linecap="round"/>
+  <!-- Badges -->
+  <rect x="25" y="20" width="145" height="24" rx="4" fill="#d97706" opacity="0.9"/>
+  <text x="97" y="36" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="600" text-anchor="middle">64-Tap NLMS + WDRC</text>
+  <rect x="255" y="195" width="120" height="24" rx="4" fill="#047857" opacity="0.9"/>
+  <text x="315" y="211" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="600" text-anchor="middle">0.8 ms / 128 Frame</text>
+</svg>
