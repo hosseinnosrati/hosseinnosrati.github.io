@@ -1,5 +1,5 @@
 // ==========================================================================
-// 3D Motion, Interactive Tilt & DSP Signal Wave Background Engine
+// 3D Motion, Section Snapping Dots & DSP Signal Wave Background Engine
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -23,40 +23,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Wave 1: Electric Cyan Carrier Wave
       ctx.beginPath();
-      ctx.lineWidth = 1.8;
-      ctx.strokeStyle = 'rgba(56, 189, 248, 0.35)';
-      ctx.shadowColor = 'rgba(56, 189, 248, 0.6)';
-      ctx.shadowBlur = 12;
+      ctx.lineWidth = 2.0;
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';
+      ctx.shadowColor = 'rgba(56, 189, 248, 0.65)';
+      ctx.shadowBlur = 14;
 
-      for (let x = 0; x < width; x += 3) {
+      for (let x = 0; x < width; x += 4) {
         const y = Math.sin(x * 0.0035 + step) * 45 + Math.cos(x * 0.007 + step * 0.8) * 20 + height * 0.45;
         if (x === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
       }
       ctx.stroke();
 
-      // Wave 2: Neon Purple / Indigo Harmonics Wave
+      // Wave 2: Neon Violet / Harmonics Wave
       ctx.beginPath();
       ctx.lineWidth = 1.6;
-      ctx.strokeStyle = 'rgba(168, 85, 247, 0.3)';
-      ctx.shadowColor = 'rgba(168, 85, 247, 0.5)';
-      ctx.shadowBlur = 10;
+      ctx.strokeStyle = 'rgba(168, 85, 247, 0.35)';
+      ctx.shadowColor = 'rgba(168, 85, 247, 0.55)';
+      ctx.shadowBlur = 12;
 
-      for (let x = 0; x < width; x += 3) {
+      for (let x = 0; x < width; x += 4) {
         const y = Math.sin(x * 0.005 - step * 1.2) * 35 + Math.sin(x * 0.002 + step * 0.5) * 25 + height * 0.55;
         if (x === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
       }
       ctx.stroke();
 
-      // Wave 3: Emerald Baseband Respiration Trace
+      // Wave 3: Emerald Baseband Trace
       ctx.beginPath();
-      ctx.lineWidth = 1.2;
-      ctx.strokeStyle = 'rgba(52, 211, 153, 0.22)';
-      ctx.shadowColor = 'rgba(52, 211, 153, 0.4)';
-      ctx.shadowBlur = 8;
+      ctx.lineWidth = 1.4;
+      ctx.strokeStyle = 'rgba(52, 211, 153, 0.28)';
+      ctx.shadowColor = 'rgba(52, 211, 153, 0.45)';
+      ctx.shadowBlur = 10;
 
-      for (let x = 0; x < width; x += 4) {
+      for (let x = 0; x < width; x += 5) {
         const y = Math.cos(x * 0.002 + step * 0.6) * 55 + height * 0.65;
         if (x === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
@@ -70,24 +70,28 @@ document.addEventListener('DOMContentLoaded', () => {
     renderWaves();
   }
 
-  // 2. 3D Scroll Reveal Animation using IntersectionObserver
-  const revealElements = document.querySelectorAll('.reveal-3d');
+  // 2. Active Dot Tracker for Section-by-Section 3D Snap
+  const sections = document.querySelectorAll('.snap-section');
+  const navDots = document.querySelectorAll('.dot-item a');
 
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -40px 0px'
-  };
-
-  const scrollObserver = new IntersectionObserver((entries, observer) => {
+  const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('is-revealed');
-        observer.unobserve(entry.target);
+        const id = entry.target.getAttribute('id');
+        navDots.forEach(dot => {
+          if (dot.getAttribute('href') === `#${id}`) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
       }
     });
-  }, observerOptions);
+  }, {
+    threshold: 0.5
+  });
 
-  revealElements.forEach(el => scrollObserver.observe(el));
+  sections.forEach(sec => sectionObserver.observe(sec));
 
   // 3. Interactive 3D Card Tilt Effect
   const tiltCards = document.querySelectorAll('.tilt-card-3d');
