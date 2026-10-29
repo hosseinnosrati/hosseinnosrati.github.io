@@ -9,6 +9,9 @@
 </head>
 <body>
 
+  <!-- Top Colorful Scientific Spectrum Bar -->
+  <div class="top-gradient-bar"></div>
+
   <!-- Top Academic Navigation Bar -->
   <header id="header">
     <a href="#" class="nav-brand">Hossein <span>Nosrati</span></a>
@@ -26,7 +29,7 @@
 
     <ul class="nav-icons">
       <li>
-        <a href="https://doi.org/10.13140/RG.2.2.16561.75366" title="ResearchGate" target="_blank">
+        <a href="https://doi.org/10.13140/RG.2.2.16561.75366" title="ResearchGate (DOI)" target="_blank">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.54 0c1.356 0 2.46 1.104 2.46 2.472v21.528l-2.58-2.052-3.636-2.892h-13.324c-1.356 0-2.46-1.104-2.46-2.472v-14.112c0-1.368 1.104-2.472 2.46-2.472h17.08zm-7.692 13.908c-.768 0-1.38-.612-1.38-1.38s.612-1.38 1.38-1.38 1.38.612 1.38 1.38-.612 1.38-1.38 1.38zm0-4.836c-1.908 0-3.456 1.548-3.456 3.456s1.548 3.456 3.456 3.456 3.456-1.548 3.456-3.456-1.548-3.456-3.456-3.456z"/></svg>
         </a>
       </li>
@@ -48,7 +51,9 @@
     <div class="container">
       <div class="hero-row">
         <div class="profile-col">
-          <img src="assets/avatar.svg" alt="Hossein Nosrati" class="profile-photo">
+          <div class="photo-wrapper">
+            <img src="assets/avatar.svg" alt="Hossein Nosrati" class="profile-photo">
+          </div>
           <h2 class="profile-name">Hossein Nosrati</h2>
           <p class="profile-role">Telecommunications Engineer</p>
           <p class="profile-dept">Digital Signal Processing & TinyML</p>
@@ -57,7 +62,7 @@
         <div class="bio-col">
           <h2>Biography</h2>
           <p>
-            I am an Electrical and Telecommunications Engineer specializing in <strong>Digital Signal Processing (DSP)</strong>, <strong>TinyML</strong>, and <strong>Resource-Constrained Embedded Systems</strong>. My research focuses on bridging statistical signal processing theory with deterministic, zero-allocation ANSI C99 firmware execution on bare-metal architectures (such as ARM Cortex-M and low-power IoT microcontrollers).
+            I am an Electrical and Telecommunications Engineer specializing in <strong>Digital Signal Processing (DSP)</strong>, <strong>TinyML</strong>, and <strong>Resource-Constrained Embedded Systems</strong>. My research bridges statistical signal processing theory with deterministic, zero-allocation ANSI C99 firmware execution on bare-metal architectures (such as ARM Cortex-M and low-power IoT microcontrollers).
           </p>
           <p>
             My core technical focus centers on formulating energy-efficient telemetry pipelines for healthcare wearables and wireless cyber-physical sensing. This includes non-distorting zero-phase IIR/FIR filter chains, real-time Pan-Tompkins QRS morphological tracking, closed-loop adaptive acoustic filtering (NLMS) for hearing assistive devices, non-contact cardiopulmonary RF sensing via Wi-Fi CSI phase sanitization, and sub-Nyquist Compressive Sensing (CS) with Orthogonal Matching Pursuit (OMP) sparse recovery.
@@ -65,14 +70,22 @@
         </div>
       </div>
 
-      <!-- Highlights (Ehsan 1:1 Layout) -->
+      <!-- Highlights (Prestigious Crimson Date Tags) -->
       <div id="highlights" class="highlights-container">
-        <h3>Highlights</h3>
+        <h3>Recent News & Highlights</h3>
         <ul class="highlights-list">
-          <li><strong>10/2026:</strong> Our paper on <a href="https://doi.org/10.13140/RG.2.2.16561.75366" target="_blank" style="color: #0284c7; font-weight: 600;">Low-Latency Deterministic Arrhythmia Telemetry via Zero-Phase IIR Filtering and Static Decision Forests</a> has been published on ResearchGate with official international <strong>DOI: 10.13140/RG.2.2.16561.75366</strong> under Open Access (CC BY 4.0).</li>
-          <li><strong>10/2026:</strong> Released four comprehensive, benchmarked open-source DSP & Edge AI repositories on GitHub covering biomedical ECG telemetry, digital hearing aid acoustic filtering, contactless RF micro-Doppler sensing, and IoT compressive sensing.</li>
-          <li><strong>10/2026:</strong> Enrolled in the <em>Digital Signal Processing (DSP) Specialization</em> at École Polytechnique Fédérale de Lausanne (EPFL) under Professor Paolo Prandoni and Professor Martin Vetterli.</li>
-          <li><strong>09/2026:</strong> Validated a 16.3 KB standalone C99 decision forest header on PhysioNet MIT-BIH records, achieving <strong>0.12 ms/beat latency</strong> (>7,800&times; real-time speedup) with 100% sensitivity for ventricular arrhythmia detection.</li>
+          <li>
+            <span class="date-tag">10/2026</span> Our paper on <a href="https://doi.org/10.13140/RG.2.2.16561.75366" target="_blank" style="color: #2563eb; font-weight: 700; text-decoration: none;">Low-Latency Deterministic Arrhythmia Telemetry via Zero-Phase IIR Filtering and Static Decision Forests</a> has been published on ResearchGate with official international <strong>DOI: 10.13140/RG.2.2.16561.75366</strong> under Open Access (CC BY 4.0).
+          </li>
+          <li>
+            <span class="date-tag">10/2026</span> Released four comprehensive, benchmarked open-source DSP & Edge AI repositories on GitHub covering biomedical ECG telemetry, digital hearing aid acoustic filtering, contactless RF micro-Doppler sensing, and IoT compressive sensing.
+          </li>
+          <li>
+            <span class="date-tag">10/2026</span> Enrolled in the <em>Digital Signal Processing (DSP) Specialization</em> at École Polytechnique Fédérale de Lausanne (EPFL) under Professor Paolo Prandoni and Professor Martin Vetterli.
+          </li>
+          <li>
+            <span class="date-tag">09/2026</span> Validated a 16.3 KB standalone C99 decision forest header on PhysioNet MIT-BIH records, achieving <strong>0.12 ms/beat latency</strong> (>7,800&times; real-time speedup) with 100% sensitivity for ventricular arrhythmia detection.
+          </li>
         </ul>
       </div>
 
@@ -84,9 +97,8 @@
     <div class="container">
       <h2 class="section-heading">Selected Publications & Preprints</h2>
       <p class="section-subheading">Peer-reviewed manuscripts, technical reports, and preprints</p>
-      <hr class="divider">
 
-      <!-- Paper 1 -->
+      <!-- Paper 1 Card -->
       <div class="pub-row">
         <div class="pub-thumb">
           <img src="assets/ecg-preview.svg" alt="ECG DSP and TinyML Pipeline">
@@ -99,12 +111,27 @@
           <p class="pub-citation">
             <span class="pub-author-me">H. Nosrati</span>, <span class="pub-title-bold">Low-Latency Deterministic Arrhythmia Telemetry via Zero-Phase IIR Filtering and Static Decision Forests on Resource-Constrained Edge Microcontrollers</span>, <em>ResearchGate Preprint</em>, Oct. 2026.
           </p>
-          <div class="pub-metric-badge">Benchmark: 0.121 ms/beat latency &bull; 100% Sensitivity (AAMI EC57) &bull; 16.3 KB Flash &bull; 0 Bytes Dynamic Heap</div>
+          
+          <div class="badge-group">
+            <span class="badge-doi-pill">DOI: 10.13140/RG.2.2.16561.75366</span>
+            <span class="pub-metric-badge">0.121 ms / beat latency</span>
+            <span class="pub-metric-badge">100% Sensitivity (AAMI EC57)</span>
+            <span class="pub-metric-badge">16.3 KB Flash &bull; 0 Bytes Heap</span>
+          </div>
+
           <div class="pub-links">
-            [<a href="https://doi.org/10.13140/RG.2.2.16561.75366" class="bracket-link" target="_blank">ResearchGate</a>]
-            [<a href="https://doi.org/10.13140/RG.2.2.16561.75366" class="bracket-link" target="_blank">DOI: 10.13140/RG.2.2.16561.75366</a>]
-            [<a href="Paper_Draft_IEEE_Format.pdf" class="bracket-link" download>PDF</a>]
-            [<a href="https://github.com/hosseinnosrati/edge-ecg-monitor" class="bracket-link" target="_blank">Code</a>]
+            <a href="https://doi.org/10.13140/RG.2.2.16561.75366" class="bracket-link accent" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.54 0c1.356 0 2.46 1.104 2.46 2.472v21.528l-2.58-2.052-3.636-2.892h-13.324c-1.356 0-2.46-1.104-2.46-2.472v-14.112c0-1.368 1.104-2.472 2.46-2.472h17.08zm-7.692 13.908c-.768 0-1.38-.612-1.38-1.38s.612-1.38 1.38-1.38 1.38.612 1.38 1.38-.612 1.38-1.38 1.38zm0-4.836c-1.908 0-3.456 1.548-3.456 3.456s1.548 3.456 3.456 3.456 3.456-1.548 3.456-3.456-1.548-3.456-3.456-3.456z"/></svg>
+              ResearchGate (DOI)
+            </a>
+            <a href="Paper_Draft_IEEE_Format.pdf" class="bracket-link" download>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+              Download PDF
+            </a>
+            <a href="https://github.com/hosseinnosrati/edge-ecg-monitor" class="bracket-link" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              GitHub Code
+            </a>
           </div>
         </div>
       </div>
@@ -112,12 +139,11 @@
     </div>
   </section>
 
-  <!-- Section: Featured Research Projects (wrapper style1) -->
+  <!-- Section 3: Featured Research Projects (wrapper style1) -->
   <section id="projects" class="wrapper style1">
     <div class="container">
       <h2 class="section-heading">Featured Research & Engineering Projects</h2>
       <p class="section-subheading">Open-source signal processing architectures, firmware headers, and interactive dashboards</p>
-      <hr class="divider">
 
       <!-- Project 1: Hearing Aid DSP -->
       <div class="pub-row">
@@ -129,16 +155,18 @@
           <p class="pub-summary">
             A real-time embedded audio DSP engine operating under strict medical latency budgets (&lt;10 ms). Features a 64-tap adaptive Normalized Least Mean Squares (NLMS) filter for howling feedback cancellation, subband spectral noise subtraction, 6-band clinical audiogram fitting (NAL-R prescription), and Wide Dynamic Range Compression (WDRC).
           </p>
-          <div class="pub-metric-badge">Benchmark: 0.805 ms frame latency (10&times; faster than 8ms budget) &bull; +4.2 dB SNR gain &bull; 4.0 KB C99 Header</div>
+          <div class="badge-group">
+            <span class="pub-metric-badge">0.805 ms frame latency (10&times; faster than 8ms)</span>
+            <span class="pub-metric-badge">+4.2 dB SNR gain</span>
+            <span class="pub-metric-badge">4.0 KB C99 Header</span>
+          </div>
           <div class="pub-links">
-            [<a href="https://github.com/hosseinnosrati/edge-hearing-aid-dsp" class="bracket-link" target="_blank">GitHub Repository</a>]
-            [<a href="https://github.com/hosseinnosrati/edge-hearing-aid-dsp/blob/main/models/hearing_aid_dsp.h" class="bracket-link" target="_blank">ANSI C99 Header</a>]
-            [<a href="https://github.com/hosseinnosrati/edge-hearing-aid-dsp/blob/main/app.py" class="bracket-link" target="_blank">Streamlit App</a>]
+            <a href="https://github.com/hosseinnosrati/edge-hearing-aid-dsp" class="bracket-link" target="_blank">View on GitHub &rarr;</a>
+            <a href="https://github.com/hosseinnosrati/edge-hearing-aid-dsp/blob/main/models/hearing_aid_dsp.h" class="bracket-link" target="_blank">ANSI C99 Header</a>
+            <a href="https://github.com/hosseinnosrati/edge-hearing-aid-dsp/blob/main/app.py" class="bracket-link" target="_blank">Streamlit App</a>
           </div>
         </div>
       </div>
-
-      <hr class="divider">
 
       <!-- Project 2: Contactless Vital RF Sensing -->
       <div class="pub-row">
@@ -150,15 +178,17 @@
           <p class="pub-summary">
             Non-invasive physiological monitoring extracting sub-millimeter chest wall displacements from 5.8 GHz RF phase shifts and Wi-Fi Channel State Information (CSI). Incorporates carrier frequency offset (CFO) regression, phase unwrapping, and dual-band IIR filtering separating thoracic respiration (0.1–0.5 Hz) from cardiac apex vibrations (0.8–2.0 Hz).
           </p>
-          <div class="pub-metric-badge">Benchmark: 0.001 ms/packet latency (&gt;9,400&times; real-time speedup) &bull; &lt;0.4 breaths/min &amp; &lt;0.5 bpm error</div>
+          <div class="badge-group">
+            <span class="pub-metric-badge">0.001 ms/packet latency (&gt;9,400&times; speedup)</span>
+            <span class="pub-metric-badge">&lt;0.4 breaths/min error</span>
+            <span class="pub-metric-badge">&lt;0.5 bpm cardiac error</span>
+          </div>
           <div class="pub-links">
-            [<a href="https://github.com/hosseinnosrati/contactless-vital-rf-sensing" class="bracket-link" target="_blank">GitHub Repository</a>]
-            [<a href="https://github.com/hosseinnosrati/contactless-vital-rf-sensing/blob/main/app.py" class="bracket-link" target="_blank">Streamlit App</a>]
+            <a href="https://github.com/hosseinnosrati/contactless-vital-rf-sensing" class="bracket-link" target="_blank">View on GitHub &rarr;</a>
+            <a href="https://github.com/hosseinnosrati/contactless-vital-rf-sensing/blob/main/app.py" class="bracket-link" target="_blank">Streamlit App</a>
           </div>
         </div>
       </div>
-
-      <hr class="divider">
 
       <!-- Project 3: IoT Compressive Sensing -->
       <div class="pub-row">
@@ -170,10 +200,14 @@
           <p class="pub-summary">
             Asymmetric compressive sensing pipeline designed to reduce on-air wireless transmission volume by 50% to 70% in IoMT battery-operated nodes. Employs random sub-Gaussian projections on-node and gateway Orthogonal Matching Pursuit (OMP) sparse recovery in the DCT basis with CRC-16 telemetry framing.
           </p>
-          <div class="pub-metric-badge">Benchmark: 0.005 ms/block node encoding &bull; 0.24% PRD clinical error (&lt;2% AAMI limit) &bull; 52.3 dB SNR</div>
+          <div class="badge-group">
+            <span class="pub-metric-badge">0.005 ms/block node encoding</span>
+            <span class="pub-metric-badge">0.24% PRD error (&lt;2% AAMI limit)</span>
+            <span class="pub-metric-badge">52.3 dB SNR</span>
+          </div>
           <div class="pub-links">
-            [<a href="https://github.com/hosseinnosrati/iot-compressive-sensing" class="bracket-link" target="_blank">GitHub Repository</a>]
-            [<a href="https://github.com/hosseinnosrati/iot-compressive-sensing/blob/main/app.py" class="bracket-link" target="_blank">Streamlit App</a>]
+            <a href="https://github.com/hosseinnosrati/iot-compressive-sensing" class="bracket-link" target="_blank">View on GitHub &rarr;</a>
+            <a href="https://github.com/hosseinnosrati/iot-compressive-sensing/blob/main/app.py" class="bracket-link" target="_blank">Streamlit App</a>
           </div>
         </div>
       </div>
@@ -181,19 +215,19 @@
     </div>
   </section>
 
-  <!-- Section 3: Curriculum Vitae Banner (wrapper style3 special) -->
+  <!-- Section 4: Curriculum Vitae Banner (wrapper style3) -->
   <section id="cv" class="wrapper style3">
     <div class="container">
       <h2>Curriculum Vitae</h2>
       <p>Research publications, engineering portfolio, and academic curriculum vitae</p>
       <a href="Paper_Draft_IEEE_Format.pdf" class="btn-download-cv" download>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
         Download CV / Research Manuscript (PDF)
       </a>
     </div>
   </section>
 
-  <!-- Footer: Get in touch (Ehsan Layout) -->
+  <!-- Footer -->
   <footer id="footer">
     <div class="container">
       <div class="footer-heading">Get in touch</div>
