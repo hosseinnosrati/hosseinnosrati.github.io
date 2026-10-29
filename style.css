@@ -1,34 +1,27 @@
 /* ==========================================================================
-   Prestige Academic Scholar Theme (Stanford / MIT / Nature Publication Style)
-   Palette: Midnight Obsidian, Royal Sapphire, Crimson Highlight & Fresh Emerald
+   Vibrant & Fresh 3D Academic Scholar Theme
+   Palette: Luminous Crystal, Ambient Glass, Electric Indigo, Cyan & Emerald Glow
+   Features: 3D Scroll Physics, Card Tilting & Fluid Parallax
    ========================================================================== */
 
 :root {
-  /* Brand Core Colors */
-  --royal-blue: #2563eb;
-  --royal-blue-hover: #1d4ed8;
-  --royal-light: #eff6ff;
-  --royal-border: #bfdbfe;
+  --primary: #2563eb;
+  --primary-gradient: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+  --accent-cyan: #06b6d4;
+  --accent-indigo: #6366f1;
+  --accent-emerald: #10b981;
+  --accent-rose: #f43f5e;
+  --accent-amber: #f59e0b;
 
-  --crimson: #e11d48;
-  --crimson-light: #fff1f2;
-  --crimson-border: #fecdd3;
-
-  --emerald: #059669;
-  --emerald-light: #ecfdf5;
-  --emerald-border: #a7f3d0;
-
-  --amber: #d97706;
-  --amber-light: #fffbeb;
-
-  --midnight: #0b1120;
-  --midnight-nav: rgba(11, 17, 32, 0.94);
-  --slate-dark: #1e293b;
+  --navy-deep: #090d16;
+  --slate-dark: #0f172a;
   --slate-body: #334155;
   --slate-muted: #64748b;
-  --slate-border: #e2e8f0;
-  --bg-page: #ffffff;
-  --bg-subtle: #f8fafc;
+  --slate-border: rgba(226, 232, 240, 0.8);
+
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.95);
+  --bg-page: #f8fafc;
 }
 
 * {
@@ -47,45 +40,93 @@ body {
   background-color: var(--bg-page);
   line-height: 1.7;
   font-size: 16px;
+  overflow-x: hidden;
+  position: relative;
   -webkit-font-smoothing: antialiased;
 }
 
-/* 1. Top Colorful Spectrum Line (Signaling Interdisciplinary Science) */
-.top-gradient-bar {
-  height: 4px;
-  width: 100%;
-  background: linear-gradient(90deg, #2563eb 0%, #06b6d4 25%, #10b981 50%, #f59e0b 75%, #e11d48 100%);
-  position: sticky;
+/* 1. Ambient Colorful Floating Aura Background Orbs */
+.ambient-glow-container {
+  position: fixed;
   top: 0;
-  z-index: 1001;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
 }
 
-/* 2. Sticky Glassmorphism Header */
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.28;
+  transition: transform 0.2s ease-out;
+  will-change: transform;
+}
+
+.orb-1 {
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, #38bdf8 0%, #3b82f6 100%);
+  top: -100px;
+  left: -150px;
+}
+
+.orb-2 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #a855f7 0%, #6366f1 100%);
+  top: 35%;
+  right: -200px;
+}
+
+.orb-3 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #34d399 0%, #06b6d4 100%);
+  bottom: -150px;
+  left: 15%;
+}
+
+/* 2. Top Vivid Rainbow Spectrum Line */
+.top-gradient-bar {
+  height: 5px;
+  width: 100%;
+  background: linear-gradient(90deg, #3b82f6 0%, #06b6d4 25%, #10b981 50%, #f59e0b 75%, #f43f5e 100%);
+  position: sticky;
+  top: 0;
+  z-index: 1002;
+  box-shadow: 0 1px 12px rgba(6, 182, 212, 0.4);
+}
+
+/* 3. Sticky Glassmorphism Header */
 #header {
   position: sticky;
-  top: 4px;
-  z-index: 1000;
-  background-color: var(--midnight-nav);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 0.85rem 2.5rem;
+  top: 5px;
+  z-index: 1001;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.9rem 2.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: all 0.2s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .nav-brand {
-  font-size: 1.2rem;
-  font-weight: 800;
+  font-size: 1.25rem;
+  font-weight: 850;
   color: #ffffff;
   text-decoration: none;
   letter-spacing: -0.02em;
 }
 
 .nav-brand span {
-  background: linear-gradient(135deg, #60a5fa 0%, #38bdf8 100%);
+  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -98,15 +139,18 @@ body {
 }
 
 .nav-menu a {
-  color: #94a3b8;
+  color: #cbd5e1;
   text-decoration: none;
-  font-size: 0.93rem;
-  font-weight: 500;
-  transition: color 0.2s;
+  font-size: 0.94rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
 }
 
 .nav-menu a:hover {
   color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .nav-icons {
@@ -117,7 +161,7 @@ body {
 }
 
 .nav-icons a {
-  color: #94a3b8;
+  color: #cbd5e1;
   text-decoration: none;
   transition: all 0.2s ease;
   display: inline-flex;
@@ -125,43 +169,70 @@ body {
 
 .nav-icons a:hover {
   color: #38bdf8;
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.1);
 }
 
-/* Layout Containers */
+/* Containers */
 .container {
-  max-width: 980px;
+  max-width: 1020px;
   margin: 0 auto;
   padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 /* Section Wrappers */
 .wrapper {
-  padding: 4.75rem 0;
+  padding: 5rem 0;
+  position: relative;
+  z-index: 1;
 }
 
 .wrapper.style1 {
-  background-color: #ffffff;
+  background: transparent;
 }
 
 .wrapper.style2 {
-  background-color: var(--bg-subtle);
+  background: rgba(241, 245, 249, 0.65);
+  backdrop-filter: blur(12px);
   border-top: 1px solid var(--slate-border);
   border-bottom: 1px solid var(--slate-border);
 }
 
 .wrapper.style3 {
-  background: linear-gradient(135deg, #0b1120 0%, #1e293b 60%, #0f172a 100%);
+  background: linear-gradient(135deg, #090d16 0%, #1e1b4b 50%, #0f172a 100%);
   color: #ffffff;
   text-align: center;
-  padding: 4.5rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 5.5rem 0;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 4. 3D Scroll Physics Animation Classes */
+.reveal-3d {
+  opacity: 0;
+  transform: perspective(1200px) rotateX(15deg) translateY(45px) scale(0.96);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.reveal-3d.is-revealed {
+  opacity: 1;
+  transform: perspective(1200px) rotateX(0deg) translateY(0) scale(1);
+}
+
+/* 5. 3D Tilt Card on Mouse Hover */
+.tilt-card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+  will-change: transform;
 }
 
 /* Hero Profile Row */
 .hero-row {
   display: grid;
-  grid-template-columns: 230px 1fr;
+  grid-template-columns: 240px 1fr;
   gap: 3.5rem;
   align-items: start;
   margin-bottom: 3.5rem;
@@ -171,47 +242,71 @@ body {
   text-align: center;
 }
 
+/* Holographic Rotating Aura for Profile Photo */
 .photo-wrapper {
   position: relative;
   display: inline-block;
   margin-bottom: 1.25rem;
 }
 
+.photo-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #06b6d4, #3b82f6, #ec4899, #10b981);
+  z-index: 0;
+  filter: blur(6px);
+  opacity: 0.75;
+  animation: pulseGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(0.98); opacity: 0.6; }
+  100% { transform: scale(1.04); opacity: 0.95; }
+}
+
 .profile-photo {
-  width: 195px;
-  height: 195px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid #ffffff;
-  box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.2), 0 8px 10px -6px rgba(15, 23, 42, 0.1);
-  background-color: var(--midnight);
+  position: relative;
+  z-index: 1;
+  background-color: var(--slate-dark);
   display: block;
 }
 
 .profile-name {
-  font-size: 1.65rem;
-  font-weight: 800;
+  font-size: 1.8rem;
+  font-weight: 850;
   color: var(--slate-dark);
   letter-spacing: -0.02em;
   margin-bottom: 0.25rem;
 }
 
 .profile-role {
-  font-size: 0.98rem;
-  font-weight: 700;
-  color: var(--royal-blue);
-  margin-bottom: 0.2rem;
+  font-size: 1.05rem;
+  font-weight: 750;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.25rem;
 }
 
 .profile-dept {
-  font-size: 0.88rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--slate-muted);
 }
 
 .bio-col h2 {
-  font-size: 1.95rem;
-  font-weight: 800;
+  font-size: 2.1rem;
+  font-weight: 850;
   color: var(--slate-dark);
   letter-spacing: -0.02em;
   margin-bottom: 1.1rem;
@@ -219,21 +314,27 @@ body {
 
 .bio-col p {
   color: var(--slate-body);
-  font-size: 1.03rem;
-  line-height: 1.78;
-  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 1.1rem;
   text-align: justify;
 }
 
-/* Highlights Box - Stanford / Ehsan Style */
+/* Highlights Box - Fresh Glass Container */
 .highlights-container {
-  padding-top: 2rem;
-  border-top: 1px solid var(--slate-border);
+  padding: 2.25rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05);
+  margin-top: 2rem;
 }
 
 .highlights-container h3 {
-  font-size: 1.4rem;
-  font-weight: 800;
+  font-size: 1.45rem;
+  font-weight: 850;
   color: var(--slate-dark);
   text-align: center;
   margin-bottom: 1.6rem;
@@ -246,41 +347,41 @@ body {
 
 .highlights-list li {
   position: relative;
-  padding-left: 1.75rem;
-  margin-bottom: 0.95rem;
-  font-size: 0.96rem;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+  font-size: 0.98rem;
   color: var(--slate-body);
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
-.highlights-list li:before {
+.highlights-list li::before {
   content: "";
   position: absolute;
   left: 0;
   top: 0.55rem;
-  width: 9px;
-  height: 9px;
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
-  background-color: var(--royal-blue);
-  box-shadow: 0 0 0 3px var(--royal-light);
+  background: linear-gradient(135deg, #06b6d4, #2563eb);
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
 }
 
-/* Notice the prestigious Crimson for Date tags */
 .date-tag {
   font-weight: 800;
-  color: var(--crimson);
-  margin-right: 0.35rem;
-  background: var(--crimson-light);
-  padding: 0.15rem 0.45rem;
-  border-radius: 4px;
-  font-size: 0.88rem;
+  color: #ffffff;
+  background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+  padding: 0.15rem 0.55rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  box-shadow: 0 2px 8px rgba(244, 63, 94, 0.35);
   display: inline-block;
+  margin-right: 0.45rem;
 }
 
 /* Section Headings */
 .section-heading {
-  font-size: 1.9rem;
-  font-weight: 800;
+  font-size: 2.1rem;
+  font-weight: 850;
   color: var(--slate-dark);
   text-align: center;
   margin-bottom: 0.4rem;
@@ -290,84 +391,87 @@ body {
 .section-subheading {
   text-align: center;
   color: var(--slate-muted);
-  font-size: 1rem;
-  margin-bottom: 2.25rem;
+  font-size: 1.05rem;
+  margin-bottom: 2.5rem;
 }
 
-/* Elegant Divider */
-hr.divider {
-  border: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--slate-border) 20%, var(--slate-border) 80%, transparent);
-  margin: 2.5rem 0;
-}
-
-/* Publication & Project Rows (Crisp Academic Card Flow) */
+/* 6. Publication & Research 3D Glass Cards */
 .pub-row {
   display: grid;
-  grid-template-columns: 210px 1fr;
-  gap: 2.25rem;
+  grid-template-columns: 220px 1fr;
+  gap: 2.5rem;
   align-items: start;
-  padding: 1.75rem;
-  background: #ffffff;
-  border: 1px solid var(--slate-border);
-  border-radius: 12px;
-  box-shadow: 0 2px 8px -2px rgba(15, 23, 42, 0.05);
-  transition: all 0.25s ease;
-  margin-bottom: 1.75rem;
+  padding: 2rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: 0 12px 35px -8px rgba(15, 23, 42, 0.06);
+  margin-bottom: 2rem;
+  cursor: default;
 }
 
 .pub-row:hover {
-  transform: translateY(-3px);
-  border-color: #cbd5e1;
-  box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.09);
+  box-shadow: 0 20px 45px -10px rgba(37, 99, 235, 0.15);
+  border-color: rgba(147, 197, 253, 0.6);
 }
 
 .pub-thumb {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
-  border: 1px solid rgba(15, 23, 42, 0.1);
-  background-color: var(--midnight);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: var(--slate-dark);
+  transform: translateZ(15px);
 }
 
 .pub-thumb img {
   width: 100%;
   height: auto;
   display: block;
+  transition: transform 0.4s ease;
+}
+
+.pub-row:hover .pub-thumb img {
+  transform: scale(1.04);
+}
+
+.pub-details {
+  transform: translateZ(20px);
 }
 
 .pub-details h4 {
-  font-size: 1.2rem;
-  font-weight: 750;
+  font-size: 1.25rem;
+  font-weight: 800;
   color: var(--slate-dark);
-  margin-bottom: 0.45rem;
-  line-height: 1.35;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
 }
 
 .pub-summary {
-  font-size: 0.94rem;
+  font-size: 0.96rem;
   color: var(--slate-muted);
-  margin-bottom: 0.65rem;
-  line-height: 1.6;
+  margin-bottom: 0.75rem;
+  line-height: 1.65;
 }
 
 .pub-citation {
-  font-size: 0.92rem;
+  font-size: 0.94rem;
   color: var(--slate-body);
-  line-height: 1.6;
-  margin-bottom: 0.65rem;
+  line-height: 1.65;
+  margin-bottom: 0.75rem;
 }
 
 .pub-author-me {
   text-decoration: underline;
-  font-weight: 800;
+  font-weight: 850;
   color: var(--slate-dark);
 }
 
 .pub-title-bold {
-  font-weight: 700;
+  font-weight: 750;
   color: var(--slate-dark);
 }
 
@@ -375,125 +479,130 @@ hr.divider {
 .badge-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-bottom: 0.75rem;
+  gap: 0.45rem;
+  margin-bottom: 0.9rem;
 }
 
 .pub-metric-badge {
-  display: inline-block;
-  background: var(--emerald-light);
-  color: var(--emerald);
-  border: 1px solid var(--emerald-border);
-  font-weight: 700;
-  font-size: 0.8rem;
-  padding: 0.2rem 0.6rem;
-  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+  font-weight: 750;
+  font-size: 0.82rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(16, 185, 129, 0.1);
 }
 
 .badge-doi-pill {
-  display: inline-block;
-  background: var(--royal-light);
-  color: var(--royal-blue);
-  border: 1px solid var(--royal-border);
-  font-weight: 700;
-  font-size: 0.8rem;
-  padding: 0.2rem 0.6rem;
-  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+  font-weight: 750;
+  font-size: 0.82rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(37, 99, 235, 0.1);
 }
 
-/* Action Links (Bracket Buttons with Color Accent) */
+/* 7. Action Buttons (Modern 3D Glow on Hover) */
 .pub-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.55rem;
   align-items: center;
 }
 
 .bracket-link {
-  color: var(--royal-blue);
-  font-weight: 700;
+  color: var(--primary);
+  font-weight: 750;
   text-decoration: none;
-  font-size: 0.86rem;
-  padding: 0.25rem 0.65rem;
-  border-radius: 6px;
-  background: var(--royal-light);
-  border: 1px solid var(--royal-border);
-  transition: all 0.2s ease;
+  font-size: 0.88rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.4rem;
 }
 
 .bracket-link:hover {
-  background: var(--royal-blue);
+  background: var(--primary-gradient);
   color: #ffffff;
-  border-color: var(--royal-blue);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(6, 182, 212, 0.35);
 }
 
 .bracket-link.accent {
-  background: var(--crimson-light);
-  color: var(--crimson);
-  border-color: var(--crimson-border);
+  background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 3px 10px rgba(244, 63, 94, 0.35);
 }
 
 .bracket-link.accent:hover {
-  background: var(--crimson);
-  color: #ffffff;
-  border-color: var(--crimson);
-  box-shadow: 0 4px 10px rgba(225, 29, 72, 0.25);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(244, 63, 94, 0.5);
 }
 
-/* Section Style 3: CV Banner */
+/* 8. CV Banner (Section Style 3) */
 .style3 h2 {
-  font-size: 2.1rem;
-  font-weight: 800;
+  font-size: 2.3rem;
+  font-weight: 850;
   margin-bottom: 0.6rem;
   color: #ffffff;
   letter-spacing: -0.02em;
 }
 
 .style3 p {
-  color: #94a3b8;
-  font-size: 1.05rem;
-  margin-bottom: 2rem;
+  color: #cbd5e1;
+  font-size: 1.1rem;
+  margin-bottom: 2.25rem;
 }
 
 .btn-download-cv {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
-  padding: 0.95rem 2.5rem;
-  font-size: 1.08rem;
-  font-weight: 750;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  gap: 0.75rem;
+  padding: 1.05rem 2.75rem;
+  font-size: 1.12rem;
+  font-weight: 800;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #06b6d4 0%, #2563eb 50%, #4f46e5 100%);
   color: #ffffff;
   text-decoration: none;
-  box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.5);
-  transition: all 0.2s ease;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 30px -5px rgba(6, 182, 212, 0.5);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .btn-download-cv:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 30px -5px rgba(37, 99, 235, 0.65);
-  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 18px 40px -5px rgba(37, 99, 235, 0.65);
 }
 
 /* Footer */
 #footer {
-  background-color: #060911;
+  background-color: var(--navy-deep);
   color: #94a3b8;
-  padding: 4.5rem 0 2.5rem 0;
+  padding: 5rem 0 3rem 0;
   text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .footer-heading {
-  font-size: 1.65rem;
-  font-weight: 800;
+  font-size: 1.75rem;
+  font-weight: 850;
   color: #ffffff;
   margin-bottom: 0.65rem;
   letter-spacing: -0.02em;
@@ -501,40 +610,40 @@ hr.divider {
 
 .footer-email-box {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 1.15rem;
-  font-weight: 800;
+  font-size: 1.2rem;
+  font-weight: 850;
   color: #38bdf8;
   margin-bottom: 0.5rem;
   letter-spacing: 0.06em;
 }
 
 .footer-role {
-  font-size: 0.96rem;
+  font-size: 1rem;
   color: #cbd5e1;
-  margin-bottom: 1.85rem;
+  margin-bottom: 2rem;
 }
 
 .footer-socials {
   display: flex;
   justify-content: center;
-  gap: 1.75rem;
+  gap: 2rem;
   list-style: none;
-  margin-bottom: 2.25rem;
+  margin-bottom: 2.5rem;
 }
 
 .footer-socials a {
-  color: #94a3b8;
-  transition: all 0.2s ease;
+  color: #cbd5e1;
+  transition: all 0.25s ease;
   display: inline-flex;
 }
 
 .footer-socials a:hover {
   color: #38bdf8;
-  transform: translateY(-3px);
+  transform: translateY(-4px) scale(1.15);
 }
 
 .footer-copy {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   color: #64748b;
 }
 
@@ -546,7 +655,7 @@ hr.divider {
     padding: 1rem;
   }
   .nav-menu {
-    gap: 1.1rem;
+    gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
   }

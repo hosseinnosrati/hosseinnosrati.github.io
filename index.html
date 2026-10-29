@@ -9,10 +9,17 @@
 </head>
 <body>
 
+  <!-- Ambient Dynamic Colorful Floating Orbs (Parallax 3D Depth) -->
+  <div class="ambient-glow-container">
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+  </div>
+
   <!-- Top Colorful Scientific Spectrum Bar -->
   <div class="top-gradient-bar"></div>
 
-  <!-- Top Academic Navigation Bar -->
+  <!-- Top Sticky Glassmorphism Header -->
   <header id="header">
     <a href="#" class="nav-brand">Hossein <span>Nosrati</span></a>
     
@@ -46,10 +53,10 @@
     </ul>
   </header>
 
-  <!-- Section 1: About Me & Highlights (wrapper style1) -->
+  <!-- Section 1: About Me & Highlights -->
   <section id="about" class="wrapper style1">
     <div class="container">
-      <div class="hero-row">
+      <div class="hero-row reveal-3d">
         <div class="profile-col">
           <div class="photo-wrapper">
             <img src="assets/avatar.svg" alt="Hossein Nosrati" class="profile-photo">
@@ -70,12 +77,12 @@
         </div>
       </div>
 
-      <!-- Highlights (Prestigious Crimson Date Tags) -->
-      <div id="highlights" class="highlights-container">
+      <!-- Highlights Box with 3D Reveal -->
+      <div id="highlights" class="highlights-container reveal-3d">
         <h3>Recent News & Highlights</h3>
         <ul class="highlights-list">
           <li>
-            <span class="date-tag">10/2026</span> Our paper on <a href="https://doi.org/10.13140/RG.2.2.16561.75366" target="_blank" style="color: #2563eb; font-weight: 700; text-decoration: none;">Low-Latency Deterministic Arrhythmia Telemetry via Zero-Phase IIR Filtering and Static Decision Forests</a> has been published on ResearchGate with official international <strong>DOI: 10.13140/RG.2.2.16561.75366</strong> under Open Access (CC BY 4.0).
+            <span class="date-tag">10/2026</span> Our paper on <a href="https://doi.org/10.13140/RG.2.2.16561.75366" target="_blank" style="color: #2563eb; font-weight: 750; text-decoration: none;">Low-Latency Deterministic Arrhythmia Telemetry via Zero-Phase IIR Filtering and Static Decision Forests</a> has been published on ResearchGate with official international <strong>DOI: 10.13140/RG.2.2.16561.75366</strong> under Open Access (CC BY 4.0).
           </li>
           <li>
             <span class="date-tag">10/2026</span> Released four comprehensive, benchmarked open-source DSP & Edge AI repositories on GitHub covering biomedical ECG telemetry, digital hearing aid acoustic filtering, contactless RF micro-Doppler sensing, and IoT compressive sensing.
@@ -92,14 +99,14 @@
     </div>
   </section>
 
-  <!-- Section 2: Selected Publications (wrapper style2) -->
+  <!-- Section 2: Selected Publications -->
   <section id="publications" class="wrapper style2">
     <div class="container">
-      <h2 class="section-heading">Selected Publications & Preprints</h2>
-      <p class="section-subheading">Peer-reviewed manuscripts, technical reports, and preprints</p>
+      <h2 class="section-heading reveal-3d">Selected Publications & Preprints</h2>
+      <p class="section-subheading reveal-3d">Peer-reviewed manuscripts, technical reports, and preprints</p>
 
-      <!-- Paper 1 Card -->
-      <div class="pub-row">
+      <!-- Paper 1 Card (3D Tilt & Scroll Reveal) -->
+      <div class="pub-row reveal-3d tilt-card-3d">
         <div class="pub-thumb">
           <img src="assets/ecg-preview.svg" alt="ECG DSP and TinyML Pipeline">
         </div>
@@ -113,7 +120,10 @@
           </p>
           
           <div class="badge-group">
-            <span class="badge-doi-pill">DOI: 10.13140/RG.2.2.16561.75366</span>
+            <span class="badge-doi-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              DOI: 10.13140/RG.2.2.16561.75366
+            </span>
             <span class="pub-metric-badge">0.121 ms / beat latency</span>
             <span class="pub-metric-badge">100% Sensitivity (AAMI EC57)</span>
             <span class="pub-metric-badge">16.3 KB Flash &bull; 0 Bytes Heap</span>
@@ -121,15 +131,15 @@
 
           <div class="pub-links">
             <a href="https://doi.org/10.13140/RG.2.2.16561.75366" class="bracket-link accent" target="_blank">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.54 0c1.356 0 2.46 1.104 2.46 2.472v21.528l-2.58-2.052-3.636-2.892h-13.324c-1.356 0-2.46-1.104-2.46-2.472v-14.112c0-1.368 1.104-2.472 2.46-2.472h17.08zm-7.692 13.908c-.768 0-1.38-.612-1.38-1.38s.612-1.38 1.38-1.38 1.38.612 1.38 1.38-.612 1.38-1.38 1.38zm0-4.836c-1.908 0-3.456 1.548-3.456 3.456s1.548 3.456 3.456 3.456 3.456-1.548 3.456-3.456-1.548-3.456-3.456-3.456z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19.54 0c1.356 0 2.46 1.104 2.46 2.472v21.528l-2.58-2.052-3.636-2.892h-13.324c-1.356 0-2.46-1.104-2.46-2.472v-14.112c0-1.368 1.104-2.472 2.46-2.472h17.08zm-7.692 13.908c-.768 0-1.38-.612-1.38-1.38s.612-1.38 1.38-1.38 1.38.612 1.38 1.38-.612 1.38-1.38 1.38zm0-4.836c-1.908 0-3.456 1.548-3.456 3.456s1.548 3.456 3.456 3.456 3.456-1.548 3.456-3.456-1.548-3.456-3.456-3.456z"/></svg>
               ResearchGate (DOI)
             </a>
             <a href="Paper_Draft_IEEE_Format.pdf" class="bracket-link" download>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
               Download PDF
             </a>
             <a href="https://github.com/hosseinnosrati/edge-ecg-monitor" class="bracket-link" target="_blank">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
               GitHub Code
             </a>
           </div>
@@ -139,14 +149,14 @@
     </div>
   </section>
 
-  <!-- Section 3: Featured Research Projects (wrapper style1) -->
+  <!-- Section 3: Featured Research Projects -->
   <section id="projects" class="wrapper style1">
     <div class="container">
-      <h2 class="section-heading">Featured Research & Engineering Projects</h2>
-      <p class="section-subheading">Open-source signal processing architectures, firmware headers, and interactive dashboards</p>
+      <h2 class="section-heading reveal-3d">Featured Research & Engineering Projects</h2>
+      <p class="section-subheading reveal-3d">Open-source signal processing architectures, firmware headers, and interactive dashboards</p>
 
       <!-- Project 1: Hearing Aid DSP -->
-      <div class="pub-row">
+      <div class="pub-row reveal-3d tilt-card-3d">
         <div class="pub-thumb">
           <img src="assets/hearing-aid-preview.svg" alt="Edge Hearing Aid DSP">
         </div>
@@ -169,7 +179,7 @@
       </div>
 
       <!-- Project 2: Contactless Vital RF Sensing -->
-      <div class="pub-row">
+      <div class="pub-row reveal-3d tilt-card-3d">
         <div class="pub-thumb">
           <img src="assets/rf-sensing-preview.svg" alt="Contactless Vital RF Sensing">
         </div>
@@ -191,7 +201,7 @@
       </div>
 
       <!-- Project 3: IoT Compressive Sensing -->
-      <div class="pub-row">
+      <div class="pub-row reveal-3d tilt-card-3d">
         <div class="pub-thumb">
           <img src="assets/compressive-sensing-preview.svg" alt="IoT Compressive Sensing">
         </div>
@@ -216,7 +226,7 @@
   </section>
 
   <!-- Section 4: Curriculum Vitae Banner (wrapper style3) -->
-  <section id="cv" class="wrapper style3">
+  <section id="cv" class="wrapper style3 reveal-3d">
     <div class="container">
       <h2>Curriculum Vitae</h2>
       <p>Research publications, engineering portfolio, and academic curriculum vitae</p>
@@ -260,6 +270,9 @@
       </div>
     </div>
   </footer>
+
+  <!-- 3D Physics & Interactive Tilt Engine -->
+  <script src="script.js"></script>
 
 </body>
 </html>
