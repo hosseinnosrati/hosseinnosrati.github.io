@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H. Nosrati | Telecommunications & Embedded DSP Researcher</title>
+    <meta name="description" content="Academic portfolio and engineering research projects by H. Nosrati in Digital Signal Processing, Edge AI, and Biomedical Telemetry.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1 class="title">H. Nosrati</h1>
+            <div class="subtitle">Electrical & Telecommunications Engineer | Digital Signal Processing (DSP) & Edge Computing</div>
+            <p class="bio">
+                I design deterministic, ultra-low-latency signal processing and Edge AI pipelines for wearable biomedical devices, RF wireless sensing, and embedded audio systems. My research bridges statistical signal processing theory with resource-constrained ANSI C99 firmware execution.
+            </p>
+            <div class="links">
+                <a href="https://github.com/hnosrati0-source" class="btn btn-primary" target="_blank">GitHub Profile</a>
+                <a href="mailto:hnosrati0@gmail.com" class="btn btn-outline">Email</a>
+                <a href="#projects" class="btn btn-outline">Featured Projects</a>
+                <a href="#publications" class="btn btn-outline">Preprints</a>
+            </div>
+        </header>
+
+        <section id="projects">
+            <h2>Featured Engineering & Research Projects</h2>
+            <div class="project-grid">
+
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <a href="https://github.com/hnosrati0-source/edge-ecg-monitor" target="_blank">Edge-ECG-Monitor &rarr;</a>
+                    </div>
+                    <p class="project-desc">
+                        Real-time biomedical DSP and Edge AI pipeline for cardiac arrhythmia detection compliant with the MIT-BIH PhysioNet benchmark. Features Pan-Tompkins QRS tracking, zero-phase notch/bandpass conditioning, and autonomic HRV spectral decomposition (Welch LF/HF ratio).
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Biomedical DSP</span>
+                        <span class="tag">Pan-Tompkins</span>
+                        <span class="tag">Spectral HRV</span>
+                        <span class="tag">ANSI C99 (16 KB)</span>
+                        <span class="tag">TinyML</span>
+                    </div>
+                    <div class="project-metrics">
+                        Benchmark: 0.12 ms/beat latency (>7,800&times; real-time speedup) | 100% Sensitivity (PVC) | <175 MB RAM
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <a href="https://github.com/hnosrati0-source/edge-hearing-aid-dsp" target="_blank">Edge-Hearing-Aid-DSP &rarr;</a>
+                    </div>
+                    <p class="project-desc">
+                        Clinical digital hearing aid acoustic architecture operating under strict latency constraints (<10 ms medical budget). Implements 64-tap adaptive NLMS feedback cancellation to suppress howling, frequency-domain spectral subtraction, and NAL-R Wide Dynamic Range Compression (WDRC).
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Acoustic DSP</span>
+                        <span class="tag">Adaptive NLMS</span>
+                        <span class="tag">WDRC Equalizer</span>
+                        <span class="tag">ANSI C99 (4 KB)</span>
+                        <span class="tag">Wideband Audio</span>
+                    </div>
+                    <div class="project-metrics">
+                        Benchmark: 0.805 ms frame latency (10&times; faster than 8ms frame) | +4.2 dB SNR enhancement | <95 MB RAM
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <a href="https://github.com/hnosrati0-source/contactless-vital-rf-sensing" target="_blank">Contactless-Vital-RF-Sensing &rarr;</a>
+                    </div>
+                    <p class="project-desc">
+                        Non-contact wireless cardiopulmonary telemetry extracting respiration and heart rates from 5.8 GHz RF phase shifts and Wi-Fi Channel State Information (CSI). Incorporates carrier frequency offset (CFO) regression and dual-band IIR decomposition to isolate sub-millimeter apex beat vibrations.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">RF Sensing</span>
+                        <span class="tag">Wi-Fi CSI</span>
+                        <span class="tag">Doppler Phase Sanitization</span>
+                        <span class="tag">Micro-Motion Decomposition</span>
+                    </div>
+                    <div class="project-metrics">
+                        Benchmark: 0.001 ms/packet latency (>9,400&times; real-time speedup) | <0.4 breaths/min & <0.5 bpm error
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <a href="https://github.com/hnosrati0-source/iot-compressive-sensing" target="_blank">IoT-Compressive-Sensing &rarr;</a>
+                    </div>
+                    <p class="project-desc">
+                        Energy-efficient sub-Nyquist Compressive Sensing (CS) telemetry pipeline for wearable IoMT sensor nodes. Reduces on-air RF transmission payload by 50% to 70% using random sub-Gaussian projections on-node and gateway Orthogonal Matching Pursuit (OMP) sparse recovery in DCT basis.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Compressive Sensing</span>
+                        <span class="tag">Sub-Nyquist</span>
+                        <span class="tag">OMP Recovery</span>
+                        <span class="tag">IoT Telemetry</span>
+                        <span class="tag">CRC-16</span>
+                    </div>
+                    <div class="project-metrics">
+                        Benchmark: 0.005 ms/block node encoding | 0.24% PRD clinical error (<2% standard) | 52.3 dB SNR
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="publications">
+            <h2>Publications & Preprints</h2>
+            <div class="pub-card">
+                <div class="pub-title">
+                    A Low-Latency Edge Biomedical DSP and TinyML Pipeline for Continuous Arrhythmia Telemetry
+                </div>
+                <div class="pub-meta">
+                    <strong>H. Nosrati</strong> &bull; <em>IEEE Conference Format Manuscript / TechRxiv Preprint (2026)</em>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="tags" style="gap: 0.75rem;">
+                <span class="tag" style="font-size: 0.9rem; padding: 0.4rem 0.8rem;">Python (NumPy, SciPy, Scikit-Learn)</span>
+                <span class="tag" style="font-size: 0.9rem; padding: 0.4rem 0.8rem;">ANSI C / C99 (Zero-Malloc Embedded)</span>
+                <span class="tag" style="font-size: 0.9rem; padding: 0.4rem 0.8rem;">MATLAB & Simulink</span>
+                <span class="tag" style="font-size: 0.9rem; padding: 0.4rem 0.8rem;">Digital Filter Design (IIR/FIR)</span>
+                <span class="tag" style="font-size: 0.9rem; padding: 0.4rem 0.8rem;">Adaptive Filtering (LMS/NLMS)</span>
+                <span class="tag" style="font-size: 0.9rem; padding: 0.4rem 0.8rem;">Spectral Analysis (Welch PSD, FFT)</span>
+                <span class="tag" style="font-size: 0.9rem; padding: 0.4rem 0.8rem;">Compressive Sensing (OMP)</span>
+                <span class="tag" style="font-size: 0.9rem; padding: 0.4rem 0.8rem;">PhysioNet MIT-BIH Standard</span>
+                <span class="tag" style="font-size: 0.9rem; padding: 0.4rem 0.8rem;">Git & Linux Environments</span>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 H. Nosrati. Hosted with GitHub Pages.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
