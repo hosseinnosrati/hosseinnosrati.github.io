@@ -803,3 +803,185 @@ body {
     justify-content: center;
   }
 }
+
+
+/* =========================================================
+   STATS SECTION
+   ========================================================= */
+.stats-section { background: rgba(15,23,42,0.4); }
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.stat-card {
+  background: rgba(15,23,42,0.7);
+  border: 1px solid rgba(56,189,248,0.2);
+  border-radius: 14px;
+  padding: 1.8rem 1rem;
+  text-align: center;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.stat-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(56,189,248,0.5);
+}
+.stat-number {
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: #38bdf8;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #22c55e;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0.4rem 0 0.3rem;
+}
+.stat-desc {
+  font-size: 0.78rem;
+  color: #64748b;
+}
+
+/* =========================================================
+   SKILLS SECTION
+   ========================================================= */
+.skills-section { background: rgba(10,18,36,0.5); }
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.skill-group {
+  background: rgba(15,23,42,0.7);
+  border: 1px solid rgba(56,189,248,0.15);
+  border-radius: 14px;
+  padding: 1.4rem 1.4rem 1.2rem;
+}
+.skill-group-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #cbd5e1;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.skill-tag {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  border: 1px solid transparent;
+}
+.tag-blue  { background: rgba(56,189,248,0.12); border-color: rgba(56,189,248,0.35); color: #7dd3fc; }
+.tag-green { background: rgba(34,197,94,0.12);  border-color: rgba(34,197,94,0.35);  color: #86efac; }
+.tag-purple{ background: rgba(192,132,252,0.12);border-color: rgba(192,132,252,0.35);color: #d8b4fe; }
+.tag-amber { background: rgba(245,158,11,0.12); border-color: rgba(245,158,11,0.35); color: #fcd34d; }
+
+/* =========================================================
+   RESEARCH INTERESTS SECTION
+   ========================================================= */
+.interests-section { background: rgba(15,23,42,0.4); }
+.interests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.4rem;
+  margin-top: 2.5rem;
+}
+.interest-card {
+  background: rgba(15,23,42,0.7);
+  border: 1px solid rgba(56,189,248,0.15);
+  border-radius: 14px;
+  padding: 1.6rem 1.4rem;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.interest-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(56,189,248,0.4);
+}
+.interest-icon { margin-bottom: 1rem; }
+.interest-card h4 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #f1f5f9;
+  margin-bottom: 0.6rem;
+}
+.interest-card p {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   TIMELINE SECTION
+   ========================================================= */
+.timeline-section { background: rgba(10,18,36,0.5); }
+.timeline {
+  position: relative;
+  margin-top: 2.5rem;
+  padding-left: 2rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.45rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #38bdf8, #c084fc, #22c55e);
+  opacity: 0.4;
+}
+.timeline-item {
+  position: relative;
+  padding: 0 0 2rem 2rem;
+}
+.timeline-dot {
+  position: absolute;
+  left: -0.55rem;
+  top: 0.3rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #38bdf8;
+  border: 2px solid #0f172a;
+  box-shadow: 0 0 8px rgba(56,189,248,0.6);
+}
+.timeline-dot.dot-current {
+  background: #22c55e;
+  box-shadow: 0 0 12px rgba(34,197,94,0.8);
+  width: 18px;
+  height: 18px;
+  left: -0.7rem;
+}
+.timeline-date {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #38bdf8;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.3rem;
+}
+.timeline-content h4 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #f1f5f9;
+  margin-bottom: 0.3rem;
+}
+.timeline-content p {
+  font-size: 0.87rem;
+  color: #94a3b8;
+  line-height: 1.6;
+}
