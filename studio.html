@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/Lora-VariableFont_wght-CZceb_kH.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/PTSans-Regular-Bam3NpBI.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/PTSans-Bold-C_DwAp7Z.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/FiraMono-Regular-CEsLFVD9.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/FiraMono-Medium-D5MAsWEG.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/FiraMono-Bold-C6PDArdf.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/apple-touch-icon.png" />
+    <link rel="manifest" crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        const scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          const element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          const hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          const newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((_entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>wasm notebook</title>
+    <script type="module" crossorigin src="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/index-s-M1OXjs.js"></script>
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/rolldown-runtime-B0Z9INg1.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/react-DVplv7_D.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/compiler-runtime-BrajqUja.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useEvent-Dfcbgjhg.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/react-dom-_LrxgvjW.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/schemas-Dv42wLFq.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/isObject-BCaOs5rp.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/isSymbol-oX0TOjjx.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/now-Cmx0b_zA.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/debounce-aFmHgJZY.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/isArrayLikeObject-DnwgSs_Z.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/_baseMerge-CQpUq7ep.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/objects-snlMn4yk.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useEventListener-D9cftcHj.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/invariant-Ci2dTZ72.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/config-VPSq73n8.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/utils-B4K466FK.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/session-DqoWmb7X.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/Deferred-CrTnjj37.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/config-DX8Y2WbJ.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/clsx-DB0hHKMi.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/cn-ldLVeaqm.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/jsx-runtime-B74pBk57.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/fullscreen-B9tHcfpV.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/dist-iaThVDkA.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/menu-items-BrwnTgyK.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/use-restore-focus-BxEGwIbk.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/createLucideIcon-DfJ2oMlA.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/circle-DXf-VWZG.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/button-COI-NGrx.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/check-BQNapYaf.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/I18nProvider-Cg2I_s1_.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useNumberFormatter-D7O_26UI.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/select-DTBn5eTb.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/toast-BGzLGnvw.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/tooltip-C9TuY18o.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/paths-bkIFVj8h.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useLifecycle-Mq4gc5kS.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/toDate-DOj9Q6uC.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/database-zap-B_PMVg8T.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/alert-dialog-BaPGzeOK.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/arrays-BqUx5USx.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/once-Haz_uxEL.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/numbers-Mk3-CcoU.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useDebounce-B_ccBZTp.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/input-BoBxR50a.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/use-toast-Wu434mLr.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/requests-lt0JK8Jt.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/uuid-k9DpjH68.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/write-secret-modal-DzKAInL2.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/plus-C5silF6g.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/trash-2-DcgaW8fn.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/preload-helper-uBIymjUX.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/dist-Cny7_yZb.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/dist-DBMV4gqt.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/capabilities-BJvf-MD4.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/cjs-C49f7GXV.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/createReducer-DgRODTW6.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/dist-qhAY4L2r.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/marked.esm-B_3iMIUq.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/strings-B2vv-ENv.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/dist-BOfh4hMd.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/badge-crT3E0Rm.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/dist-DtH-7lot.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/dist-BmExfiwX.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/dist-1tmpVXyz.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/dist-LSsCJjA3.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/dist-DusFODSa.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/stex-Dc5bKD4z.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useTheme-COhSHkCj.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useAsyncData-C7aJJz0Y.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/purify.es--06brOip.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/cells-BRkCaSsh.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/coerce-CpE6kUdX.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/get-DjNf4SIX.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/_hasPath-BmRQipI0.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/hasIn-yw4sIeJR.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/_baseSet-Bpdo9AvU.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/pick-DKIID_Mo.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/state-BAJYRhmO.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/state-C3oDoyFe.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/LazyAnyLanguageCodeMirror-CKcCbG2G.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/copy-D8O_CYCG.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/micromark-factory-space-D9Dr-k4J.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/chunk-YOKDWASO-BIpRENEC.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/markdown-renderer-BG3sp2rs.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/copy-Djr5m5ac.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/copy-icon-BIiRXh_3.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useRunCells-B2vUhREg.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/RenderHTML-BbOqmHy3.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/blob-D5nfNHOo.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/kbd-pdKBv96t.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useInstallPackage-iX1eufdl.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/errors-DCrsa1nH.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/api-BeC_VSGv.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/share-BZW3tzEX.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/events-CbeVJ6OD.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/state-_Qai_QyX.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/pair-CaQyK6En.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/ErrorBoundary-Gl5nCA8C.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/config-BOKzA3tF.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/chevron-right-eAtVhbNZ.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/dropdown-menu-C1rnl-0o.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/html-to-image-DK9Zl1lU.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/download-DCJXy66H.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/switch-CTaiAjrz.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/tabs-BuQlZFbt.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/table-DG7Ap4H4.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/eye-off-CxVozGAC.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/refresh-cw-Qw1f8Jhy.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/tree-actions-GM5E_bUs.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/ellipsis-63DyBLHQ.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/external-link-UrX9KO36.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/spinner-DyNE-o8o.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/message-circle-C3rKm8_a.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/hat-glasses-C8RhSVii.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/package-GSoSTiIK.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/datasource-Cq6x_5ML.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/alert-DTaqCu_d.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/state-XsPO8hNi.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/cell-link-LSth_8hT.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/MarimoErrorOutput-D60XkCny.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useDateFormatter-DA-62E-Y.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/en-US-Buu61juQ.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/isValid-q_Ad80ug.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/dates-BbFQ2oE4.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/defaultLocale-CNPGWpMu.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/precisionRound-Bq_nmf5u.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/defaultLocale-D5bOh7g6.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/vega-loader.browser-CLRkNgm7.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/tooltip-mT3CGest.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/react-icons.esm-D6tfmvq8.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/extends-CvVTau-c.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/objectWithoutPropertiesLoose-Do6ywDBO.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useIframeCapabilities-CwTkczVN.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/error-banner-Cd69vvyX.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/utils-CaQYvazl.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/formats-yZ06h1Pl.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/table-vrvqpuKJ.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/react-resizable-panels.browser.esm-Dbe0MrFr.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/JsonOutput-D6HIIsCb.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/chart-no-axes-column-C4_v6fQW.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/square-function-_W_Lo0P4.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/spec-BfSBcO5B.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/semaphore-BjoL5P0h.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/fileToBase64-BgBraYAr.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useBoolean-BDD6_xQQ.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/code-xml-SQaZqvcO.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/file-headphone-Dl35U6h3.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/file-BPBVl9pl.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/image-wZvTj8WY.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/file-icons-CdJgUy-I.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/globe-UdPdIbF7.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/esm-CI_o7NhW.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useAddCell-GR7eEQrT.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/readonly-python-code-DCSMIsTX.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/data-grid-types-DgHVN_Zz.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/glide-utils-CIrAxdjv.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/column-preview-Cm2D6vyX.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/square-BPmgQFnh.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/triangle-alert-DmIqR8sY.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/prop-types-Djf4O40e.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/es-Cqst59WX.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/package-data-dv4FBHxR.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/markdown-export-DzhB1FrN.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/renderShortcut-BkVJQ_Zh.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/bundle.esm-D3tw5rqW.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/icons-CiZ_8zS-.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useDeepCompareMemoize-DFIVN9dn.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/pathUtils-DPmlLd-r.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/floating-outline-XD9FAV-f.js">
+    <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/cells-0PFKL3SH.css">
+    <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/markdown-renderer-DjIHoF9Z.css">
+    <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/JsonOutput-B0GmlMnR.css">
+    <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/index-Bcdzex-3.css">
+  <marimo-wasm hidden=""></marimo-wasm>
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    
+<script data-marimo="true">
+    Object.defineProperty(window, "__MARIMO_EXPORT_CONTEXT__", {
+        value: Object.freeze({
+            trusted: true,
+            notebookCode: "import marimo\n\n__generated_with = \"0.25.2\"\napp = marimo.App(width=\"medium\")\n\n\n@app.cell\ndef _():\n    import marimo as mo\n    import numpy as np\n    import matplotlib.pyplot as plt\n    import math\n\n    # IEC 60063 Standard E24 Base Values\n    E24_BASE = [\n        1.0, 1.1, 1.2, 1.3, 1.5, 1.6, 1.8, 2.0, 2.2, 2.4, 2.7, 3.0,\n        3.3, 3.6, 3.9, 4.3, 4.7, 5.1, 5.6, 6.2, 6.8, 7.5, 8.2, 9.1\n    ]\n\n    def snap_e24(val):\n        if val \u003C= 0:\n            return val\n        dec = math.floor(math.log10(val))\n        mant = val / (10 ** dec)\n        best = min(E24_BASE, key=lambda b: abs(b - mant))\n        return best * (10 ** dec)\n\n    def format_unit(val, comp=\"res\"):\n        if \"res\" in comp:\n            if val \u003E= 1e6:\n                return f\"{val/1e6:.3g} M\u03a9\"\n            elif val \u003E= 1e3:\n                return f\"{val/1e3:.3g} k\u03a9\"\n            return f\"{val:.3g} \u03a9\"\n        elif \"cap\" in comp:\n            if val \u003E= 1e-6:\n                return f\"{val*1e6:.3g} \u00b5F\"\n            elif val \u003E= 1e-9:\n                return f\"{val*1e9:.3g} nF\"\n            elif val \u003E= 1e-12:\n                return f\"{val*1e12:.3g} pF\"\n            return f\"{val:.3g} F\"\n        return f\"{val:.3g}\"\n\n    return format_unit, math, mo, np, plt, snap_e24\n\n\n@app.cell\ndef _(mo):\n    mo.md(\"\"\"\n    # \u26a1 Circuit Design Anything (CDA) \u2014 WebAssembly Studio\n    ### *100% Client-Side In-Browser EDA Simulation powered by Pyodide \u0026 Marimo WASM*\n    **Zero Server Dependencies \u0026bull; Runs entirely inside your browser CPU**\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(mo):\n    topo_choice = mo.ui.dropdown(\n        options=[\n            \"Sallen-Key Active Lowpass (2nd Order)\",\n            \"Active Twin-T Notch Filter (50/60 Hz)\",\n            \"Precision Instrumentation Amplifier (AD620)\",\n            \"1st-Order Passive RC Lowpass\",\n        ],\n        value=\"Sallen-Key Active Lowpass (2nd Order)\",\n        label=\"Circuit Topology\",\n    )\n\n    freq_in = mo.ui.slider(\n        start=10,\n        stop=5000,\n        step=5,\n        value=100,\n        label=\"Target Frequency / Gain\",\n    )\n\n    mo.hstack([topo_choice, freq_in], justify=\"start\", gap=2)\n    return freq_in, topo_choice\n\n\n@app.cell\ndef _(format_unit, freq_in, math, mo, np, plt, snap_e24, topo_choice):\n    target_f = freq_in.value\n    topo = topo_choice.value\n\n    if \"Sallen\" in topo:\n        C2_ideal = 10e-9\n        C1_ideal = 20e-9\n        w_c = 2.0 * math.pi * target_f\n        R_ideal = 1.0 / (w_c * math.sqrt(C1_ideal * C2_ideal))\n        R_act = snap_e24(R_ideal)\n        fc_act = 1.0 / (2.0 * math.pi * R_act * math.sqrt(C1_ideal * C2_ideal))\n        err = ((fc_act - target_f) / target_f) * 100.0\n\n        bom_rows = [\n            (\"R1\", format_unit(R_act, \"res\"), \"R_0805\", \"1% Thin-Film\"),\n            (\"R2\", format_unit(R_act, \"res\"), \"R_0805\", \"1% Thin-Film\"),\n            (\"C1\", \"20 nF\", \"C_0805\", \"5% C0G/NP0 Ceramic\"),\n            (\"C2\", \"10 nF\", \"C_0805\", \"5% C0G/NP0 Ceramic\"),\n            (\"U1\", \"TL072\", \"SOIC-8\", \"Dual Low-Noise JFET Op-Amp\"),\n        ]\n\n    elif \"Notch\" in topo:\n        C_ideal = 100e-9\n        R_ideal = 1.0 / (2.0 * math.pi * target_f * C_ideal)\n        R_act = snap_e24(R_ideal)\n        R_shunt = snap_e24(R_act / 2.0)\n        fc_act = 1.0 / (2.0 * math.pi * R_act * C_ideal)\n        err = ((fc_act - target_f) / target_f) * 100.0\n\n        bom_rows = [\n            (\"R1, R2\", format_unit(R_act, \"res\"), \"R_0805\", \"0.1% Precision Thin-Film\"),\n            (\"R3 (R/2)\", format_unit(R_shunt, \"res\"), \"R_0805\", \"0.1% Precision Thin-Film\"),\n            (\"C1, C2\", \"100 nF\", \"C_0805\", \"1% Film Capacitor\"),\n            (\"C3 (2C)\", \"200 nF\", \"C_0805\", \"1% Film Capacitor\"),\n            (\"U1\", \"OPA1612\", \"SOIC-8\", \"Ultra-Low Distortion Audio Op-Amp\"),\n        ]\n\n    elif \"Instrumentation\" in topo:\n        rg_ideal = 49400.0 / (target_f - 1.0)\n        rg_act = snap_e24(rg_ideal)\n        gain_act = 1.0 + (49400.0 / rg_act)\n        fc_act = gain_act\n        err = ((gain_act - target_f) / target_f) * 100.0\n\n        bom_rows = [\n            (\"U1\", \"AD620ARZ\", \"SOIC-8\", \"Precision Instrumentation Amp\"),\n            (\"Rg\", format_unit(rg_act, \"res\"), \"R_0805\", \"0.1% 25ppm Thin-Film\"),\n            (\"C1, C2\", \"100 nF\", \"C_0603\", \"Decoupling X7R\"),\n        ]\n\n    else:\n        C_ideal = 100e-9\n        R_ideal = 1.0 / (2.0 * math.pi * target_f * C_ideal)\n        R_act = snap_e24(R_ideal)\n        fc_act = 1.0 / (2.0 * math.pi * R_act * C_ideal)\n        err = ((fc_act - target_f) / target_f) * 100.0\n\n        bom_rows = [\n            (\"R1\", format_unit(R_act, \"res\"), \"R_0603\", \"1% Thick Film\"),\n            (\"C1\", \"100 nF\", \"C_0603\", \"5% X7R Ceramic\"),\n        ]\n\n    # Metrics\n    unit_str = \"x\" if \"Instrumentation\" in topo else \"Hz\"\n    metrics = mo.hstack(\n        [\n            mo.stat(value=f\"{target_f} {unit_str}\", label=\"Design Target\"),\n            mo.stat(value=f\"{fc_act:.2f} {unit_str}\", label=\"Synthesized with E24\"),\n            mo.stat(value=f\"{err:+.2f}%\", label=\"Tolerance Deviation\"),\n        ],\n        justify=\"space-between\",\n    )\n\n    # Plot\n    f_axis = np.logspace(np.log10(max(1.0, target_f / 50.0)), np.log10(target_f * 50.0), 300)\n    w = 2.0 * np.pi * f_axis\n\n    fig, ax = plt.subplots(figsize=(8.5, 3.2), dpi=120)\n    fig.patch.set_facecolor(\"#0b1120\")\n    ax.set_facecolor(\"#0f172a\")\n\n    if \"Sallen\" in topo:\n        w_c = 2.0 * np.pi * fc_act\n        mag_db = 20 * np.log10(1.0 / np.sqrt((1 - (w / w_c)**2)**2 + 2 * (w / w_c)**2))\n    elif \"Notch\" in topo:\n        w_n = 2.0 * np.pi * fc_act\n        mag_db = 20 * np.log10(np.maximum(1e-3, np.abs(1 - (w / w_n)**2)) / np.sqrt((1 - (w / w_n)**2)**2 + 4 * (w / w_n)**2))\n    else:\n        w_c = 2.0 * np.pi * fc_act\n        mag_db = 20 * np.log10(1.0 / np.sqrt(1 + (w / w_c)**2))\n\n    ax.semilogx(f_axis, mag_db, color=\"#38bdf8\", lw=2.2, label=\"AC Magnitude (dB)\")\n    ax.axvline(fc_act, color=\"#22c55e\", ls=\"--\", lw=1.5, label=f\"Corner: {fc_act:.1f} {unit_str}\")\n    ax.set_title(f\"Client-Side WASM Frequency Analysis: {topo}\", color=\"#f1f5f9\", fontsize=11, fontweight=\"bold\")\n    ax.set_xlabel(\"Frequency (Hz)\", color=\"#94a3b8\")\n    ax.set_ylabel(\"Gain (dB)\", color=\"#94a3b8\")\n    ax.grid(True, which=\"both\", color=\"#1e293b\", ls=\":\")\n    ax.tick_params(colors=\"#94a3b8\")\n    for spine in ax.spines.values():\n        spine.set_color(\"#334155\")\n    ax.legend(facecolor=\"#1e293b\", edgecolor=\"#334155\", labelcolor=\"#f1f5f9\")\n    plt.tight_layout()\n\n    # Markdown BOM\n    bom_md_lines = [\"| Designator | Commercial Value | Package | Description |\", \"| :--- | :--- | :--- | :--- |\"]\n    for row in bom_rows:\n        bom_md_lines.append(f\"| **{row[0]}** | `{row[1]}` | `{row[2]}` | {row[3]} |\")\n    bom_table = mo.md(\"\\n\".join(bom_md_lines))\n\n    mo.vstack([metrics, fig, mo.md(\"### Bill of Materials (BOM)\"), bom_table])\n    return\n\n\nif __name__ == \"__main__\":\n    app.run()\n",
+        }),
+        writable: false,
+        configurable: false,
+    });
+</script>
+<marimo-code hidden="">import%20marimo%0A%0A__generated_with%20%3D%20%220.25.2%22%0Aapp%20%3D%20marimo.App(width%3D%22medium%22)%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20marimo%20as%20mo%0A%20%20%20%20import%20numpy%20as%20np%0A%20%20%20%20import%20matplotlib.pyplot%20as%20plt%0A%20%20%20%20import%20math%0A%0A%20%20%20%20%23%20IEC%2060063%20Standard%20E24%20Base%20Values%0A%20%20%20%20E24_BASE%20%3D%20%5B%0A%20%20%20%20%20%20%20%201.0%2C%201.1%2C%201.2%2C%201.3%2C%201.5%2C%201.6%2C%201.8%2C%202.0%2C%202.2%2C%202.4%2C%202.7%2C%203.0%2C%0A%20%20%20%20%20%20%20%203.3%2C%203.6%2C%203.9%2C%204.3%2C%204.7%2C%205.1%2C%205.6%2C%206.2%2C%206.8%2C%207.5%2C%208.2%2C%209.1%0A%20%20%20%20%5D%0A%0A%20%20%20%20def%20snap_e24(val)%3A%0A%20%20%20%20%20%20%20%20if%20val%20%3C%3D%200%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20val%0A%20%20%20%20%20%20%20%20dec%20%3D%20math.floor(math.log10(val))%0A%20%20%20%20%20%20%20%20mant%20%3D%20val%20%2F%20(10%20**%20dec)%0A%20%20%20%20%20%20%20%20best%20%3D%20min(E24_BASE%2C%20key%3Dlambda%20b%3A%20abs(b%20-%20mant))%0A%20%20%20%20%20%20%20%20return%20best%20*%20(10%20**%20dec)%0A%0A%20%20%20%20def%20format_unit(val%2C%20comp%3D%22res%22)%3A%0A%20%20%20%20%20%20%20%20if%20%22res%22%20in%20comp%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20val%20%3E%3D%201e6%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20f%22%7Bval%2F1e6%3A.3g%7D%20M%CE%A9%22%0A%20%20%20%20%20%20%20%20%20%20%20%20elif%20val%20%3E%3D%201e3%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20f%22%7Bval%2F1e3%3A.3g%7D%20k%CE%A9%22%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20f%22%7Bval%3A.3g%7D%20%CE%A9%22%0A%20%20%20%20%20%20%20%20elif%20%22cap%22%20in%20comp%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20val%20%3E%3D%201e-6%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20f%22%7Bval*1e6%3A.3g%7D%20%C2%B5F%22%0A%20%20%20%20%20%20%20%20%20%20%20%20elif%20val%20%3E%3D%201e-9%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20f%22%7Bval*1e9%3A.3g%7D%20nF%22%0A%20%20%20%20%20%20%20%20%20%20%20%20elif%20val%20%3E%3D%201e-12%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20f%22%7Bval*1e12%3A.3g%7D%20pF%22%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20f%22%7Bval%3A.3g%7D%20F%22%0A%20%20%20%20%20%20%20%20return%20f%22%7Bval%3A.3g%7D%22%0A%0A%20%20%20%20return%20format_unit%2C%20math%2C%20mo%2C%20np%2C%20plt%2C%20snap_e24%0A%0A%0A%40app.cell%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(%22%22%22%0A%20%20%20%20%23%20%E2%9A%A1%20Circuit%20Design%20Anything%20(CDA)%20%E2%80%94%20WebAssembly%20Studio%0A%20%20%20%20%23%23%23%20*100%25%20Client-Side%20In-Browser%20EDA%20Simulation%20powered%20by%20Pyodide%20%26%20Marimo%20WASM*%0A%20%20%20%20**Zero%20Server%20Dependencies%20%26bull%3B%20Runs%20entirely%20inside%20your%20browser%20CPU**%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(mo)%3A%0A%20%20%20%20topo_choice%20%3D%20mo.ui.dropdown(%0A%20%20%20%20%20%20%20%20options%3D%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Sallen-Key%20Active%20Lowpass%20(2nd%20Order)%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Active%20Twin-T%20Notch%20Filter%20(50%2F60%20Hz)%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Precision%20Instrumentation%20Amplifier%20(AD620)%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%221st-Order%20Passive%20RC%20Lowpass%22%2C%0A%20%20%20%20%20%20%20%20%5D%2C%0A%20%20%20%20%20%20%20%20value%3D%22Sallen-Key%20Active%20Lowpass%20(2nd%20Order)%22%2C%0A%20%20%20%20%20%20%20%20label%3D%22Circuit%20Topology%22%2C%0A%20%20%20%20)%0A%0A%20%20%20%20freq_in%20%3D%20mo.ui.slider(%0A%20%20%20%20%20%20%20%20start%3D10%2C%0A%20%20%20%20%20%20%20%20stop%3D5000%2C%0A%20%20%20%20%20%20%20%20step%3D5%2C%0A%20%20%20%20%20%20%20%20value%3D100%2C%0A%20%20%20%20%20%20%20%20label%3D%22Target%20Frequency%20%2F%20Gain%22%2C%0A%20%20%20%20)%0A%0A%20%20%20%20mo.hstack(%5Btopo_choice%2C%20freq_in%5D%2C%20justify%3D%22start%22%2C%20gap%3D2)%0A%20%20%20%20return%20freq_in%2C%20topo_choice%0A%0A%0A%40app.cell%0Adef%20_(format_unit%2C%20freq_in%2C%20math%2C%20mo%2C%20np%2C%20plt%2C%20snap_e24%2C%20topo_choice)%3A%0A%20%20%20%20target_f%20%3D%20freq_in.value%0A%20%20%20%20topo%20%3D%20topo_choice.value%0A%0A%20%20%20%20if%20%22Sallen%22%20in%20topo%3A%0A%20%20%20%20%20%20%20%20C2_ideal%20%3D%2010e-9%0A%20%20%20%20%20%20%20%20C1_ideal%20%3D%2020e-9%0A%20%20%20%20%20%20%20%20w_c%20%3D%202.0%20*%20math.pi%20*%20target_f%0A%20%20%20%20%20%20%20%20R_ideal%20%3D%201.0%20%2F%20(w_c%20*%20math.sqrt(C1_ideal%20*%20C2_ideal))%0A%20%20%20%20%20%20%20%20R_act%20%3D%20snap_e24(R_ideal)%0A%20%20%20%20%20%20%20%20fc_act%20%3D%201.0%20%2F%20(2.0%20*%20math.pi%20*%20R_act%20*%20math.sqrt(C1_ideal%20*%20C2_ideal))%0A%20%20%20%20%20%20%20%20err%20%3D%20((fc_act%20-%20target_f)%20%2F%20target_f)%20*%20100.0%0A%0A%20%20%20%20%20%20%20%20bom_rows%20%3D%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20(%22R1%22%2C%20format_unit(R_act%2C%20%22res%22)%2C%20%22R_0805%22%2C%20%221%25%20Thin-Film%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20(%22R2%22%2C%20format_unit(R_act%2C%20%22res%22)%2C%20%22R_0805%22%2C%20%221%25%20Thin-Film%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20(%22C1%22%2C%20%2220%20nF%22%2C%20%22C_0805%22%2C%20%225%25%20C0G%2FNP0%20Ceramic%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20(%22C2%22%2C%20%2210%20nF%22%2C%20%22C_0805%22%2C%20%225%25%20C0G%2FNP0%20Ceramic%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20(%22U1%22%2C%20%22TL072%22%2C%20%22SOIC-8%22%2C%20%22Dual%20Low-Noise%20JFET%20Op-Amp%22)%2C%0A%20%20%20%20%20%20%20%20%5D%0A%0A%20%20%20%20elif%20%22Notch%22%20in%20topo%3A%0A%20%20%20%20%20%20%20%20C_ideal%20%3D%20100e-9%0A%20%20%20%20%20%20%20%20R_ideal%20%3D%201.0%20%2F%20(2.0%20*%20math.pi%20*%20target_f%20*%20C_ideal)%0A%20%20%20%20%20%20%20%20R_act%20%3D%20snap_e24(R_ideal)%0A%20%20%20%20%20%20%20%20R_shunt%20%3D%20snap_e24(R_act%20%2F%202.0)%0A%20%20%20%20%20%20%20%20fc_act%20%3D%201.0%20%2F%20(2.0%20*%20math.pi%20*%20R_act%20*%20C_ideal)%0A%20%20%20%20%20%20%20%20err%20%3D%20((fc_act%20-%20target_f)%20%2F%20target_f)%20*%20100.0%0A%0A%20%20%20%20%20%20%20%20bom_rows%20%3D%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20(%22R1%2C%20R2%22%2C%20format_unit(R_act%2C%20%22res%22)%2C%20%22R_0805%22%2C%20%220.1%25%20Precision%20Thin-Film%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20(%22R3%20(R%2F2)%22%2C%20format_unit(R_shunt%2C%20%22res%22)%2C%20%22R_0805%22%2C%20%220.1%25%20Precision%20Thin-Film%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20(%22C1%2C%20C2%22%2C%20%22100%20nF%22%2C%20%22C_0805%22%2C%20%221%25%20Film%20Capacitor%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20(%22C3%20(2C)%22%2C%20%22200%20nF%22%2C%20%22C_0805%22%2C%20%221%25%20Film%20Capacitor%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20(%22U1%22%2C%20%22OPA1612%22%2C%20%22SOIC-8%22%2C%20%22Ultra-Low%20Distortion%20Audio%20Op-Amp%22)%2C%0A%20%20%20%20%20%20%20%20%5D%0A%0A%20%20%20%20elif%20%22Instrumentation%22%20in%20topo%3A%0A%20%20%20%20%20%20%20%20rg_ideal%20%3D%2049400.0%20%2F%20(target_f%20-%201.0)%0A%20%20%20%20%20%20%20%20rg_act%20%3D%20snap_e24(rg_ideal)%0A%20%20%20%20%20%20%20%20gain_act%20%3D%201.0%20%2B%20(49400.0%20%2F%20rg_act)%0A%20%20%20%20%20%20%20%20fc_act%20%3D%20gain_act%0A%20%20%20%20%20%20%20%20err%20%3D%20((gain_act%20-%20target_f)%20%2F%20target_f)%20*%20100.0%0A%0A%20%20%20%20%20%20%20%20bom_rows%20%3D%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20(%22U1%22%2C%20%22AD620ARZ%22%2C%20%22SOIC-8%22%2C%20%22Precision%20Instrumentation%20Amp%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20(%22Rg%22%2C%20format_unit(rg_act%2C%20%22res%22)%2C%20%22R_0805%22%2C%20%220.1%25%2025ppm%20Thin-Film%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20(%22C1%2C%20C2%22%2C%20%22100%20nF%22%2C%20%22C_0603%22%2C%20%22Decoupling%20X7R%22)%2C%0A%20%20%20%20%20%20%20%20%5D%0A%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20C_ideal%20%3D%20100e-9%0A%20%20%20%20%20%20%20%20R_ideal%20%3D%201.0%20%2F%20(2.0%20*%20math.pi%20*%20target_f%20*%20C_ideal)%0A%20%20%20%20%20%20%20%20R_act%20%3D%20snap_e24(R_ideal)%0A%20%20%20%20%20%20%20%20fc_act%20%3D%201.0%20%2F%20(2.0%20*%20math.pi%20*%20R_act%20*%20C_ideal)%0A%20%20%20%20%20%20%20%20err%20%3D%20((fc_act%20-%20target_f)%20%2F%20target_f)%20*%20100.0%0A%0A%20%20%20%20%20%20%20%20bom_rows%20%3D%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20(%22R1%22%2C%20format_unit(R_act%2C%20%22res%22)%2C%20%22R_0603%22%2C%20%221%25%20Thick%20Film%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20(%22C1%22%2C%20%22100%20nF%22%2C%20%22C_0603%22%2C%20%225%25%20X7R%20Ceramic%22)%2C%0A%20%20%20%20%20%20%20%20%5D%0A%0A%20%20%20%20%23%20Metrics%0A%20%20%20%20unit_str%20%3D%20%22x%22%20if%20%22Instrumentation%22%20in%20topo%20else%20%22Hz%22%0A%20%20%20%20metrics%20%3D%20mo.hstack(%0A%20%20%20%20%20%20%20%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20mo.stat(value%3Df%22%7Btarget_f%7D%20%7Bunit_str%7D%22%2C%20label%3D%22Design%20Target%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20mo.stat(value%3Df%22%7Bfc_act%3A.2f%7D%20%7Bunit_str%7D%22%2C%20label%3D%22Synthesized%20with%20E24%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20mo.stat(value%3Df%22%7Berr%3A%2B.2f%7D%25%22%2C%20label%3D%22Tolerance%20Deviation%22)%2C%0A%20%20%20%20%20%20%20%20%5D%2C%0A%20%20%20%20%20%20%20%20justify%3D%22space-between%22%2C%0A%20%20%20%20)%0A%0A%20%20%20%20%23%20Plot%0A%20%20%20%20f_axis%20%3D%20np.logspace(np.log10(max(1.0%2C%20target_f%20%2F%2050.0))%2C%20np.log10(target_f%20*%2050.0)%2C%20300)%0A%20%20%20%20w%20%3D%202.0%20*%20np.pi%20*%20f_axis%0A%0A%20%20%20%20fig%2C%20ax%20%3D%20plt.subplots(figsize%3D(8.5%2C%203.2)%2C%20dpi%3D120)%0A%20%20%20%20fig.patch.set_facecolor(%22%230b1120%22)%0A%20%20%20%20ax.set_facecolor(%22%230f172a%22)%0A%0A%20%20%20%20if%20%22Sallen%22%20in%20topo%3A%0A%20%20%20%20%20%20%20%20w_c%20%3D%202.0%20*%20np.pi%20*%20fc_act%0A%20%20%20%20%20%20%20%20mag_db%20%3D%2020%20*%20np.log10(1.0%20%2F%20np.sqrt((1%20-%20(w%20%2F%20w_c)**2)**2%20%2B%202%20*%20(w%20%2F%20w_c)**2))%0A%20%20%20%20elif%20%22Notch%22%20in%20topo%3A%0A%20%20%20%20%20%20%20%20w_n%20%3D%202.0%20*%20np.pi%20*%20fc_act%0A%20%20%20%20%20%20%20%20mag_db%20%3D%2020%20*%20np.log10(np.maximum(1e-3%2C%20np.abs(1%20-%20(w%20%2F%20w_n)**2))%20%2F%20np.sqrt((1%20-%20(w%20%2F%20w_n)**2)**2%20%2B%204%20*%20(w%20%2F%20w_n)**2))%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20w_c%20%3D%202.0%20*%20np.pi%20*%20fc_act%0A%20%20%20%20%20%20%20%20mag_db%20%3D%2020%20*%20np.log10(1.0%20%2F%20np.sqrt(1%20%2B%20(w%20%2F%20w_c)**2))%0A%0A%20%20%20%20ax.semilogx(f_axis%2C%20mag_db%2C%20color%3D%22%2338bdf8%22%2C%20lw%3D2.2%2C%20label%3D%22AC%20Magnitude%20(dB)%22)%0A%20%20%20%20ax.axvline(fc_act%2C%20color%3D%22%2322c55e%22%2C%20ls%3D%22--%22%2C%20lw%3D1.5%2C%20label%3Df%22Corner%3A%20%7Bfc_act%3A.1f%7D%20%7Bunit_str%7D%22)%0A%20%20%20%20ax.set_title(f%22Client-Side%20WASM%20Frequency%20Analysis%3A%20%7Btopo%7D%22%2C%20color%3D%22%23f1f5f9%22%2C%20fontsize%3D11%2C%20fontweight%3D%22bold%22)%0A%20%20%20%20ax.set_xlabel(%22Frequency%20(Hz)%22%2C%20color%3D%22%2394a3b8%22)%0A%20%20%20%20ax.set_ylabel(%22Gain%20(dB)%22%2C%20color%3D%22%2394a3b8%22)%0A%20%20%20%20ax.grid(True%2C%20which%3D%22both%22%2C%20color%3D%22%231e293b%22%2C%20ls%3D%22%3A%22)%0A%20%20%20%20ax.tick_params(colors%3D%22%2394a3b8%22)%0A%20%20%20%20for%20spine%20in%20ax.spines.values()%3A%0A%20%20%20%20%20%20%20%20spine.set_color(%22%23334155%22)%0A%20%20%20%20ax.legend(facecolor%3D%22%231e293b%22%2C%20edgecolor%3D%22%23334155%22%2C%20labelcolor%3D%22%23f1f5f9%22)%0A%20%20%20%20plt.tight_layout()%0A%0A%20%20%20%20%23%20Markdown%20BOM%0A%20%20%20%20bom_md_lines%20%3D%20%5B%22%7C%20Designator%20%7C%20Commercial%20Value%20%7C%20Package%20%7C%20Description%20%7C%22%2C%20%22%7C%20%3A---%20%7C%20%3A---%20%7C%20%3A---%20%7C%20%3A---%20%7C%22%5D%0A%20%20%20%20for%20row%20in%20bom_rows%3A%0A%20%20%20%20%20%20%20%20bom_md_lines.append(f%22%7C%20**%7Brow%5B0%5D%7D**%20%7C%20%60%7Brow%5B1%5D%7D%60%20%7C%20%60%7Brow%5B2%5D%7D%60%20%7C%20%7Brow%5B3%5D%7D%20%7C%22)%0A%20%20%20%20bom_table%20%3D%20mo.md(%22%5Cn%22.join(bom_md_lines))%0A%0A%20%20%20%20mo.vstack(%5Bmetrics%2C%20fig%2C%20mo.md(%22%23%23%23%20Bill%20of%20Materials%20(BOM)%22)%2C%20bom_table%5D)%0A%20%20%20%20return%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+    <div id="root"></div>
+    <script data-marimo="true">
+      Object.defineProperty(window, "__MARIMO_MOUNT_CONFIG__", {
+        value: Object.freeze({
+            "filename": "notebook.py",
+            "cwd": "",
+            "lspWorkspace": null,
+            "mode": "read",
+            "version": "0.25.2",
+            "serverToken": "unused",
+            "config": {"ai": {"allow_provider_config": true, "custom_providers": {}, "enabled": true, "models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "auto_close_pairs": true, "copilot": false, "signature_hint_on_typing": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "below", "code_editor_font_size": 14, "code_lens": true, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": true, "theme": "light"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "pip"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_csv_encoding": "utf-8", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "show_tracebacks": false, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"sql_output": "auto", "width": "medium"},
+            "layout": null,
+            "view": {"showAppCode": false},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null
+        }),
+        writable: false,
+        configurable: false,
+      });
+    </script>
+  </body>
+</html>
