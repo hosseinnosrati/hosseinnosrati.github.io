@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hossein Nosrati - Academic Curriculum Vitae</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 12mm 15mm 12mm 15mm;
+        }
+        @media print {
+            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .no-print { display: none !important; }
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            background-color: #f1f5f9;
+            color: #0f172a;
+            line-height: 1.42;
+            padding: 20px;
+        }
+        .cv-wrapper {
+            background: #ffffff;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 30px 38px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            border-radius: 4px;
+        }
+        /* Action Bar */
+        .action-bar {
+            max-width: 210mm;
+            margin: 0 auto 15px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .btn-print {
+            background: #0284c7;
+            color: #ffffff;
+            border: none;
+            padding: 10px 22px;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .btn-print:hover { background: #0369a1; }
+        
+        /* Header */
+        .cv-header {
+            text-align: center;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 14px;
+            margin-bottom: 14px;
+        }
+        .name {
+            font-size: 26px;
+            font-weight: 850;
+            color: #0f172a;
+            letter-spacing: -0.02em;
+        }
+        .title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #0284c7;
+            margin: 2px 0 3px 0;
+        }
+        .subtitle {
+            font-size: 12px;
+            color: #64748b;
+            font-weight: 500;
+        }
+        .contact-links {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #334155;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .contact-links a {
+            color: #0284c7;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .contact-links a:hover { text-decoration: underline; }
+
+        /* Section Styling */
+        .section-title {
+            font-size: 13.5px;
+            font-weight: 800;
+            color: #0f172a;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1.5px solid #0284c7;
+            padding-bottom: 3px;
+            margin: 12px 0 8px 0;
+        }
+        .section-title span.icon {
+            color: #0284c7;
+            font-size: 14px;
+        }
+
+        /* Items */
+        .entry {
+            margin-bottom: 8px;
+        }
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-size: 13px;
+        }
+        .entry-title {
+            font-weight: 750;
+            color: #0f172a;
+        }
+        .entry-date {
+            font-size: 11.5px;
+            color: #64748b;
+            font-weight: 600;
+        }
+        .entry-subtitle {
+            font-size: 12px;
+            color: #334155;
+            font-style: italic;
+            margin-top: 1px;
+        }
+        .entry-desc {
+            font-size: 12px;
+            color: #334155;
+            margin-top: 2px;
+            line-height: 1.38;
+        }
+        ul.bullet-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 3px;
+        }
+        ul.bullet-list li {
+            position: relative;
+            padding-left: 14px;
+            font-size: 11.8px;
+            color: #334155;
+            margin-bottom: 2px;
+            line-height: 1.35;
+        }
+        ul.bullet-list li::before {
+            content: "•";
+            position: absolute;
+            left: 2px;
+            color: #0284c7;
+            font-weight: bold;
+        }
+        
+        /* Badges */
+        .badge-link {
+            font-size: 11px;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 1px 7px;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+        }
+        .badge-cyan { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+        .badge-green { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+        .badge-red { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
+
+        /* Skills Table */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            row-gap: 4px;
+            font-size: 11.8px;
+            margin-top: 4px;
+        }
+        .skill-cat {
+            font-weight: 750;
+            color: #0f172a;
+        }
+        .skill-val {
+            color: #334155;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="action-bar no-print">
+        <span style="font-size: 13px; color: #475569;">
+            📄 <strong>Ready to Save:</strong> Click the button to print or save as a pixel-perfect PDF.
+        </span>
+        <button class="btn-print" onclick="window.print()">
+            🖨️ Print / Save as PDF
+        </button>
+    </div>
+
+    <div class="cv-wrapper">
+        <!-- HEADER -->
+        <header class="cv-header">
+            <h1 class="name">Hossein Nosrati</h1>
+            <div class="title">Electrical & Telecommunications Engineering Researcher</div>
+            <div class="subtitle">Autonomous EDA & AI Agents • Biomedical Digital Signal Processing • Edge TinyML</div>
+            <div class="contact-links">
+                <span>✉️ <a href="mailto:hnosrati0@gmail.com">hnosrati0@gmail.com</a></span>
+                <span>🌐 <a href="https://hosseinnosrati.github.io" target="_blank">hosseinnosrati.github.io</a></span>
+                <span>💻 <a href="https://github.com/hosseinnosrati" target="_blank">github.com/hosseinnosrati</a></span>
+                <span>🐦 <a href="https://x.com/MhosseinNosrati" target="_blank">@MhosseinNosrati</a></span>
+                <span>📚 <a href="https://doi.org/10.13140/RG.2.2.16561.75366" target="_blank">ResearchGate (DOI)</a></span>
+                <span>📍 Qom, Iran</span>
+            </div>
+        </header>
+
+        <!-- SUMMARY -->
+        <section class="section">
+            <div class="section-title"><span class="icon">💡</span> Executive Summary</div>
+            <p class="entry-desc">
+                Electrical engineering researcher specializing in deterministic embedded DSP, ultra-low-latency physiological telemetry, and edge TinyML for medical devices. Demonstrated track record with a peer-reviewed research preprint (DOI: 10.13140/RG.2.2.16561.75366), verified credentials from Harvard University and Cisco, and open-source zero-malloc C99 telemetry architectures benchmarked at &gt;86k frames/sec. Seeking BME / ECE graduate research fellowships.
+            </p>
+        </section>
+
+        <!-- EDUCATION -->
+        <section class="section">
+            <div class="section-title"><span class="icon">🎓</span> Education</div>
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">University of Qom</span>
+                    <span class="entry-date">10/2022 – 06/2026 (Expected)</span>
+                </div>
+                <div class="entry-subtitle">Bachelor of Science in Electrical Engineering • Cumulative GPA: <strong>17.02 / 20.00</strong> (Top-tier standing)</div>
+                <ul class="bullet-list">
+                    <li><strong>Key Coursework:</strong> Digital Signal Processing (DSP), Signals & Systems, Communication Systems, Linear Control Systems, Microprocessors, Advanced Programming (C/C++), Electrical Circuit Analysis.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- VERIFIED CREDENTIALS -->
+        <section class="section">
+            <div class="section-title"><span class="icon">📜</span> Verified International Credentials & Languages</div>
+            <div class="entry">
+                <ul class="bullet-list">
+                    <li>
+                        <strong>Harvard University (CS50 AI):</strong> <em>Introduction to Artificial Intelligence with Python</em>
+                        <a href="https://cs50.harvard.edu/certificates/6f42434c-d8b9-4bd9-80da-30d417c757ad" target="_blank" class="badge-link badge-cyan">Harvard Verified ↗</a>
+                        <br><span style="color: #64748b; font-size: 11px;">Neural networks, CNNs, probabilistic reasoning, reinforcement learning, and graph optimization algorithms.</span>
+                    </li>
+                    <li>
+                        <strong>Harvard University (CS50P):</strong> <em>Introduction to Programming with Python</em>
+                        <a href="https://cs50.harvard.edu/certificates/9b4d5ca1-189c-4e76-b2e8-99d57466ec45" target="_blank" class="badge-link badge-cyan">Harvard Verified ↗</a>
+                        <br><span style="color: #64748b; font-size: 11px;">Object-oriented architecture, automated unit testing, regex, numerical computing, and complexity.</span>
+                    </li>
+                    <li>
+                        <strong>Cisco Networking Academy:</strong> <em>Introduction to IoT & Digital Transformation</em>
+                        <a href="https://www.credly.com/badges/9421de56-080d-47d0-9413-912bdc368470/public_url" target="_blank" class="badge-link badge-green">Cisco Credly Verified ↗</a>
+                        <br><span style="color: #64748b; font-size: 11px;">Intent-Based Networking (IBN), end-to-end telemetry verification, sensor automation, and data security policies.</span>
+                    </li>
+                    <li>
+                        <strong>Language Proficiency:</strong> <strong>TOEFL iBT</strong> (Certified Official Score: Advanced Level) • Persian (Native), English (Full Professional & Academic Proficiency).
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- FEATURED PUBLICATION -->
+        <section class="section">
+            <div class="section-title"><span class="icon">🔬</span> Featured Research Publication</div>
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Low-Latency Deterministic Arrhythmia Telemetry via Zero-Phase IIR Filtering and Static Decision Forests on Edge Microcontrollers</span>
+                    <span class="entry-date">Oct. 2026</span>
+                </div>
+                <div class="entry-desc">
+                    <strong>H. Nosrati</strong>, <em>ResearchGate Preprint</em>. Official DOI: <a href="https://doi.org/10.13140/RG.2.2.16561.75366" target="_blank" style="color: #0284c7; font-weight: 700;">10.13140/RG.2.2.16561.75366</a>
+                    <a href="https://github.com/hosseinnosrati/edge-ecg-monitor" target="_blank" class="badge-link badge-cyan" style="margin-left: 6px;">GitHub & Benchmark ↗</a>
+                </div>
+                <ul class="bullet-list">
+                    <li>Formulated a zero-phase forward-backward IIR conditioning pipeline eliminating cardiac ST-segment phase distortion.</li>
+                    <li>Implemented Pan-Tompkins QRS peak detection and Welch spectral HRV extraction coupled with a 16.3 KB static decision forest.</li>
+                    <li>Achieved <strong>100% Sensitivity</strong> (AAMI EC57 standard on MIT-BIH), <strong>0.121 ms/beat</strong> latency, and strictly <strong>0 Bytes dynamic heap</strong>.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SELECTED PROJECTS -->
+        <section class="section">
+            <div class="section-title"><span class="icon">⚙️</span> Selected Engineering & Research Projects</div>
+            
+            <!-- Project 0: CDA -->
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Circuit Design Anything (CDA) — Autonomous EDA MCP Server</span>
+                    <span class="entry-date">
+                        <a href="https://circuit-design-anything-sgsl7u3hcr76gy96xsltgg.streamlit.app" target="_blank" class="badge-link badge-green">Live EDA Studio ↗</a>
+                        <a href="https://github.com/hosseinnosrati/circuit-design-anything" target="_blank" class="badge-link badge-cyan">GitHub v0.1.0 ↗</a>
+                    </span>
+                </div>
+                <div class="entry-subtitle">Model Context Protocol (MCP), MNA SPICE Frequency Sweep, IEC 60063 Decade Snapping, KiCad Export</div>
+                <ul class="bullet-list">
+                    <li>Engineered an autonomous Electronic Design Automation (EDA) server connecting Claude Code and Cursor to closed-loop SPICE simulation.</li>
+                    <li>Developed an analytical Modified Nodal Analysis (MNA) solver computing AC frequency response, -3dB bandwidth, and phase margins.</li>
+                    <li>Automated logarithmic decade snapping to standard commercial tolerances (E12, E24, 1% E96) and generated manufacturing KiCad netlists & BOMs.</li>
+                </ul>
+            </div>
+
+            <!-- Project 0b: HDA -->
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Hardware Debug Anything (HDA) — Silicon Diagnostics & Virtual Hardware</span>
+                    <span class="entry-date">
+                        <a href="https://github.com/hosseinnosrati/hardware-debug-anything" target="_blank" class="badge-link badge-cyan">GitHub v0.1.0 ↗</a>
+                    </span>
+                </div>
+                <div class="entry-subtitle">ARM Cortex-M Fault Registers (CFSR/HFSR/BFAR), ESP32 Guru Meditation, Antmicro Renode Emulation</div>
+                <ul class="bullet-list">
+                    <li>Developed a bare-metal fault decoder translating ARM Cortex-M hex register dumps into actionable plain-English root causes.</li>
+                    <li>Integrated automated Renode script generation allowing zero-hardware virtual silicon execution and vector table verification.</li>
+                </ul>
+            </div>
+
+            <!-- Project 1 -->
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Industrial & Medical IoT Edge Vital Telemetry Gateway</span>
+                    <span class="entry-date">
+                        <a href="https://vital-edge-gateway.streamlit.app" target="_blank" class="badge-link badge-green">Live Demo ↗</a>
+                        <a href="https://github.com/hosseinnosrati/iot-edge-vital-gateway" target="_blank" class="badge-link badge-cyan">GitHub ↗</a>
+                    </span>
+                </div>
+                <div class="entry-subtitle">ANSI C99 Zero-Malloc Core, Hardware CRC-16-CCITT, AsyncIO Gateway, SQLite Store-and-Forward</div>
+                <ul class="bullet-list">
+                    <li>Engineered an embedded C99 telemetry engine for PPG/SpO2 processing with strictly 0 bytes dynamic heap allocation.</li>
+                    <li>Benchmarked throughput of <strong>86,375 packets/sec</strong> and deterministic mean processing latency of <strong>11.58 &mu;s/frame</strong>.</li>
+                </ul>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Contactless Vital Signs Sensing via Wi-Fi CSI & 5.8 GHz RF</span>
+                    <span class="entry-date"><a href="https://github.com/hosseinnosrati/contactless-vital-rf-sensing" target="_blank" class="badge-link badge-cyan">GitHub ↗</a></span>
+                </div>
+                <div class="entry-subtitle">Carrier Frequency Offset (CFO) Mitigation, Subcarrier Sanitization, Micro-Doppler Extraction</div>
+                <ul class="bullet-list">
+                    <li>Extracted 0.3 mm chest micro-displacements from Wi-Fi CSI phase shifts; sanitized phase via linear regression across OFDM subcarriers.</li>
+                    <li>Implemented dual-band IIR filters separating respiration (0.1–0.5 Hz) and cardiac beats (0.8–2.5 Hz) with <strong>1.05 &mu;s/packet</strong> latency.</li>
+                </ul>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Sub-Nyquist Compressive Sensing Telemetry for IoT</span>
+                    <span class="entry-date"><a href="https://github.com/hosseinnosrati/iot-compressive-sensing" target="_blank" class="badge-link badge-cyan">GitHub ↗</a></span>
+                </div>
+                <div class="entry-subtitle">Bernoulli Random Projection, Orthogonal Matching Pursuit (OMP), DCT Sparse Recovery</div>
+                <ul class="bullet-list">
+                    <li>Reduced IoT radio transmission volume by 50%–70% via multiplication-free binary Bernoulli measurement projections.</li>
+                    <li>Gateway OMP solver achieved <strong>0.24% PRD</strong> error metric and <strong>52.3 dB SNR</strong> reconstruction fidelity.</li>
+                </ul>
+            </div>
+
+            <!-- Project 4: Clinical X-Ray Fateh Scan -->
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">High-Voltage Circuits & Reliability for Clinical X-Ray Scanners (Fateh Scan)</span>
+                    <span class="entry-date">Practical Project</span>
+                </div>
+                <ul class="bullet-list">
+                    <li>Assisted in testing, circuit safety analysis, and high-voltage reliability evaluation for clinical X-ray imaging systems.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- TEACHING EXPERIENCE -->
+        <section class="section">
+            <div class="section-title"><span class="icon">👨‍🏫</span> Academic Teaching Experience</div>
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Teaching Assistant (TA) — Linear Control Systems</span>
+                    <span class="entry-date">Spring 2025</span>
+                </div>
+                <div class="entry-subtitle">University of Qom, Department of Electrical Engineering (Supervisor: Dr. M. Hossein Shafiniya)</div>
+                <ul class="bullet-list">
+                    <li>Conducted weekly problem-solving recitations for 40+ undergraduate engineering students and evaluated course assignments.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section class="section">
+            <div class="section-title"><span class="icon">🛠️</span> Technical Skills</div>
+            <div class="skills-grid">
+                <div class="skill-cat">Languages & Firmware:</div>
+                <div class="skill-val">ANSI C (C99/C11, Zero-Malloc), C++, Python (NumPy, SciPy, PyTorch), MATLAB, Verilog/HDL</div>
+                
+                <div class="skill-cat">DSP & Edge TinyML:</div>
+                <div class="skill-val">Pan-Tompkins QRS, IIR/FIR Filter Design, FFT, Wavelet, NLMS, CS-OMP, Decision Forests, CNNs</div>
+                
+                <div class="skill-cat">IoT & Protocols:</div>
+                <div class="skill-val">MQTT, WebSockets, CRC-16, BLE, Wi-Fi CSI, SQLite Store-and-Forward, Cisco IBN</div>
+                
+                <div class="skill-cat">Hardware & EDA Tools:</div>
+                <div class="skill-val">Model Context Protocol (MCP), KiCad v6–v8, SPICE & MNA Solvers, Schemdraw, Renode Virtual Silicon, ARM Cortex-M, ESP32, LaTeX</div>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
