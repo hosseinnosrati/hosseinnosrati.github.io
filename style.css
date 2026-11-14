@@ -32,7 +32,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: none;
   overflow-y: scroll;
   background-color: #070b14;
 }
@@ -188,23 +188,21 @@ body {
   filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.8));
 }
 
-/* 5. 3D Fullpage Snap Sections */
+/* 5. Clean Academic Flow Sections */
 .snap-section {
-  min-height: 100vh;
+  min-height: auto;
   width: 100%;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   position: relative;
-  padding: 8.5rem 1.5rem 4rem 1.5rem;
+  padding: 4.5rem 1.5rem 3rem 1.5rem;
   z-index: 1;
 }
 
 #about.snap-section {
-  padding-top: 9rem;
+  padding-top: 6.5rem;
 }
 
 .container {
