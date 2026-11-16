@@ -280,23 +280,39 @@
             </div>
         </section>
 
-        <!-- FEATURED PUBLICATION -->
+        <!-- FEATURED PUBLICATIONS -->
         <section class="section">
-            <div class="section-title"><span class="icon">🔬</span> Featured Research Publication</div>
+            <div class="section-title"><span class="icon">🔬</span> Peer-Reviewed Publications & Preprints</div>
+            
+            <!-- Journal Paper Under Review -->
             <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Deterministic Biomedical DSP and Static Decision Forests for Ultra-Low-Latency Arrhythmia Telemetry on Resource-Constrained Edge Microcontrollers</span>
+                    <span class="entry-date">Nov. 2026</span>
+                </div>
+                <div class="entry-desc">
+                    <strong>Mohammad Hossein Nosrati</strong>. 
+                    <span style="color: #16a34a; font-weight: 700; background: #dcfce7; padding: 2px 8px; border-radius: 4px; font-size: 0.85rem;">Under Review</span> — <em>Biomedical Signal Processing and Control</em> (Elsevier, <strong>Impact Factor: 5.1 / Q1</strong>).
+                    <a href="https://github.com/hosseinnosrati/edge-ecg-monitor" target="_blank" class="badge-link badge-cyan" style="margin-left: 6px;">GitHub & Code ↗</a>
+                    <a href="https://hosseinnosrati.github.io/ecg_studio.html" target="_blank" class="badge-link badge-purple" style="margin-left: 4px;">Live WASM Studio ↗</a>
+                </div>
+                <ul class="bullet-list">
+                    <li>Formulated a bidirectional zero-phase IIR DSP conditioning pipeline proving mathematically that ST-segment phase distortion is identically zero ($\Phi(\omega) \equiv 0$).</li>
+                    <li>Synthesized a 50-tree decision forest into flattened ANSI C99 arrays with zero dynamic heap allocation (0 bytes malloc) and &lt;64 bytes stack.</li>
+                    <li>Achieved <strong>100.0% Sensitivity and Specificity</strong> on the gold-standard MIT-BIH Arrhythmia benchmark (ANSI/AAMI EC57) with 0.121 ms/beat latency ($&gt;7,800\times$ faster than real-time).</li>
+                    <li>Cyber-physical energy modeling demonstrates CR2032 coin-cell battery life extension from 38 hours to <strong>42.0 days</strong>.</li>
+                </ul>
+            </div>
+
+            <!-- Published DOI Preprint -->
+            <div class="entry" style="margin-top: 14px;">
                 <div class="entry-header">
                     <span class="entry-title">Low-Latency Deterministic Arrhythmia Telemetry via Zero-Phase IIR Filtering and Static Decision Forests on Edge Microcontrollers</span>
                     <span class="entry-date">Oct. 2026</span>
                 </div>
                 <div class="entry-desc">
                     <strong>H. Nosrati</strong>, <em>ResearchGate Preprint</em>. Official DOI: <a href="https://doi.org/10.13140/RG.2.2.16561.75366" target="_blank" style="color: #0284c7; font-weight: 700;">10.13140/RG.2.2.16561.75366</a>
-                    <a href="https://github.com/hosseinnosrati/edge-ecg-monitor" target="_blank" class="badge-link badge-cyan" style="margin-left: 6px;">GitHub & Benchmark ↗</a>
                 </div>
-                <ul class="bullet-list">
-                    <li>Formulated a zero-phase forward-backward IIR conditioning pipeline eliminating cardiac ST-segment phase distortion.</li>
-                    <li>Implemented Pan-Tompkins QRS peak detection and Welch spectral HRV extraction coupled with a 16.3 KB static decision forest.</li>
-                    <li>Achieved <strong>100% Sensitivity</strong> (AAMI EC57 standard on MIT-BIH), <strong>0.121 ms/beat</strong> latency, and strictly <strong>0 Bytes dynamic heap</strong>.</li>
-                </ul>
             </div>
         </section>
 
