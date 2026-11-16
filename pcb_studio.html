@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Interactive PCB Studio | Circuit Design Anything (CDA)</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #090d16;
+      color: #f1f5f9;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 20;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .brand-icon {
+      font-size: 1.4rem;
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      border-radius: 8px;
+      padding: 4px 8px;
+    }
+    .brand-title {
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+    .brand-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+
+    .header-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-left: 1rem;
+      transition: color 0.2s;
+    }
+    .header-links a:hover { color: #38bdf8; }
+    .header-links .btn-back {
+      background: rgba(255, 255, 255, 0.08);
+      color: #f8fafc;
+      padding: 4px 12px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    /* Main Container */
+    .app-container {
+      display: flex;
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 3D Canvas Area */
+    #canvas-container {
+      flex: 1;
+      height: 100%;
+      position: relative;
+      outline: none;
+    }
+
+    /* Floating Control Overlay */
+    .controls-panel {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      width: 320px;
+      background: rgba(15, 23, 42, 0.90);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 14px;
+      padding: 1.25rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      z-index: 10;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+    }
+
+    .panel-section {
+      margin-bottom: 1.1rem;
+    }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #38bdf8;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    select, input, button {
+      width: 100%;
+      padding: 0.55rem 0.75rem;
+      border-radius: 8px;
+      border: 1px solid #334155;
+      background: #0f172a;
+      color: #f1f5f9;
+      font-family: inherit;
+      font-size: 0.85rem;
+      outline: none;
+      transition: all 0.2s;
+    }
+    select:focus, input:focus {
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+    }
+
+    /* Color Swatches */
+    .color-swatches {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .swatch {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .swatch:hover { transform: scale(1.15); }
+    .swatch.active { border-color: #ffffff; transform: scale(1.15); }
+    .swatch-black { background: #18181b; }
+    .swatch-green { background: #064e3b; }
+    .swatch-blue  { background: #1e3a8a; }
+    .swatch-red   { background: #881337; }
+    .swatch-white { background: #f1f5f9; }
+
+    /* Telemetry HUD */
+    .hud-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 0.75rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .metric-box {
+      display: flex;
+      flex-direction: column;
+    }
+    .metric-name {
+      font-size: 0.7rem;
+      color: #94a3b8;
+    }
+    .metric-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #38bdf8;
+    }
+
+    /* Action Buttons */
+    .btn-action {
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      color: #ffffff;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      margin-top: 0.4rem;
+    }
+    .btn-action:hover {
+      background: linear-gradient(135deg, #0369a1, #0284c7);
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.4);
+    }
+
+    /* 3D Viewport Hint */
+    .viewport-hint {
+      position: absolute;
+      bottom: 1rem;
+      right: 1.5rem;
+      background: rgba(15, 23, 42, 0.7);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.75rem;
+      color: #94a3b8;
+      pointer-events: none;
+    }
+  </style>
+
+  <!-- Three.js & OrbitControls via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <div class="brand-icon">⚡</div>
+      <div>
+        <div class="brand-title">3D Interactive PCB CAD Studio</div>
+        <div style="font-size: 0.75rem; color: #94a3b8;">Autonomous EDA Hardware Synthesis Engine</div>
+      </div>
+      <span class="brand-tag">CDA v0.1.0</span>
+    </div>
+
+    <div class="header-links">
+      <a href="https://github.com/hosseinnosrati/circuit-design-anything" target="_blank">GitHub Repo ↗</a>
+      <a href="https://circuit-design-anything-sgsl7u3hcr76gy96xsltgg.streamlit.app/" target="_blank">Cloud Streamlit ↗</a>
+      <a href="index.html" class="btn-back">← Back to Portfolio</a>
+    </div>
+  </header>
+
+  <div class="app-container">
+    <!-- 3D Canvas -->
+    <div id="canvas-container"></div>
+
+    <!-- HUD Control Panel -->
+    <div class="controls-panel">
+      <div class="panel-section">
+        <label class="section-label">Circuit Topology</label>
+        <select id="topology-select">
+          <option value="sallen_key">2nd-Order Sallen-Key Lowpass (Butterworth)</option>
+          <option value="twin_t">Twin-T Medical Notch Filter (50Hz Hum)</option>
+          <option value="ad620">AD620 Instrumentation Amplifier</option>
+        </select>
+      </div>
+
+      <div class="panel-section">
+        <label class="section-label">Solder Mask Color</label>
+        <div class="color-swatches">
+          <div class="swatch swatch-black active" data-color="#18181b" title="Matte Black"></div>
+          <div class="swatch swatch-green" data-color="#064e3b" title="Classic Green"></div>
+          <div class="swatch swatch-blue" data-color="#1e3a8a" title="Royal Blue"></div>
+          <div class="swatch swatch-red" data-color="#881337" title="Ruby Red"></div>
+          <div class="swatch swatch-white" data-color="#f8fafc" title="Polar White"></div>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <label class="section-label">Hardware Telemetry & Yield</label>
+        <div class="hud-metrics">
+          <div class="metric-box">
+            <span class="metric-name">Cutoff (fc)</span>
+            <span class="metric-val" id="val-fc">100.0 Hz</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-name">IEC Series</span>
+            <span class="metric-val" id="val-series">E96 (1%)</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-name">Board Size</span>
+            <span class="metric-val">48 × 32 mm</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-name">SMD Footprint</span>
+            <span class="metric-val">0805 Imperial</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <label class="section-label">BOM Components</label>
+        <div id="bom-list" style="font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: #cbd5e1; line-height: 1.5;">
+          • U1: OPA1612 (SOIC-8)<br>
+          • R1, R2: 10.0 kΩ 1% (0805)<br>
+          • C1: 220 nF (0805 SMD)<br>
+          • C2: 100 nF (0805 SMD)
+        </div>
+      </div>
+
+      <button class="btn-action" id="btn-export-kicad">💾 Export KiCad Netlist (.net)</button>
+      <button class="btn-action" id="btn-autorotate" style="background: rgba(255,255,255,0.08); margin-top: 6px;">🔄 Toggle Auto-Rotation</button>
+    </div>
+
+    <div class="viewport-hint">
+      🖱️ Left-Click: Rotate 360° | Right-Click: Pan | Scroll: Zoom
+    </div>
+  </div>
+
+  <script>
+    // --- Three.js 3D PCB Scene Initialization ---
+    const container = document.getElementById('canvas-container');
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x090d16);
+
+    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+    camera.position.set(0, 50, 75);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    container.appendChild(renderer.domElement);
+
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.maxPolarAngle = Math.PI / 2 + 0.1;
+
+    // --- Lighting ---
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+    scene.add(ambientLight);
+
+    const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
+    dirLight.position.set(30, 60, 40);
+    dirLight.castShadow = true;
+    dirLight.shadow.mapSize.width = 1024;
+    dirLight.shadow.mapSize.height = 1024;
+    scene.add(dirLight);
+
+    const blueRimLight = new THREE.DirectionalLight(0x38bdf8, 0.8);
+    blueRimLight.position.set(-40, 20, -30);
+    scene.add(blueRimLight);
+
+    // --- PCB Board Geometry ---
+    let pcbColor = 0x18181b; // Default Matte Black
+    const pcbGroup = new THREE.Group();
+    scene.add(pcbGroup);
+
+    let pcbMesh;
+    const boardW = 48;
+    const boardH = 32;
+    const boardThick = 1.6;
+
+    function buildPCB(colorHex) {
+      // Clear previous components
+      while(pcbGroup.children.length > 0) { 
+        pcbGroup.remove(pcbGroup.children[0]); 
+      }
+
+      // 1. FR4 Board Base
+      const pcbGeo = new THREE.BoxGeometry(boardW, boardThick, boardH);
+      const pcbMat = new THREE.MeshStandardMaterial({
+        color: colorHex,
+        roughness: 0.35,
+        metalness: 0.1,
+      });
+      pcbMesh = new THREE.Mesh(pcbGeo, pcbMat);
+      pcbMesh.receiveShadow = true;
+      pcbMesh.castShadow = true;
+      pcbGroup.add(pcbMesh);
+
+      // 2. Corner Mounting Holes (Gold ENIG Plated)
+      const holePositions = [
+        [-boardW/2 + 3, -boardH/2 + 3],
+        [boardW/2 - 3, -boardH/2 + 3],
+        [-boardW/2 + 3, boardH/2 - 3],
+        [boardW/2 - 3, boardH/2 - 3]
+      ];
+      const ringGeo = new THREE.CylinderGeometry(2.0, 2.0, boardThick + 0.05, 24);
+      const goldMat = new THREE.MeshStandardMaterial({ color: 0xd4af37, metalness: 0.9, roughness: 0.2 });
+      holePositions.forEach(pos => {
+        const ring = new THREE.Mesh(ringGeo, goldMat);
+        ring.position.set(pos[0], 0, pos[1]);
+        pcbGroup.add(ring);
+      });
+
+      // 3. Copper / Gold Traces
+      const traceMat = new THREE.MeshStandardMaterial({ color: 0xcca010, metalness: 0.8, roughness: 0.3 });
+      const traceCoords = [
+        { w: 20, h: 0.8, x: -8, z: 4 },
+        { w: 0.8, h: 14, x: 2, z: -3 },
+        { w: 16, h: 0.8, x: -6, z: -10 },
+        { w: 18, h: 0.8, x: 10, z: 6 }
+      ];
+      traceCoords.forEach(t => {
+        const trGeo = new THREE.BoxGeometry(t.w, 0.04, t.h);
+        const tr = new THREE.Mesh(trGeo, traceMat);
+        tr.position.set(t.x, boardThick/2 + 0.02, t.z);
+        pcbGroup.add(tr);
+      });
+
+      // 4. Central IC: SOIC-8 Package
+      buildSOIC8(pcbGroup, 0, boardThick/2, 0);
+
+      // 5. SMD 0805 Passive Components
+      // Resistors (R1, R2, R3)
+      buildSMD0805(pcbGroup, -12, boardThick/2, 6, 0x111111, "103");
+      buildSMD0805(pcbGroup, -12, boardThick/2, -6, 0x111111, "103");
+      // Capacitors (C1, C2)
+      buildSMD0805(pcbGroup, 12, boardThick/2, 6, 0xb48a5c, ""); // Tan ceramic
+      buildSMD0805(pcbGroup, 12, boardThick/2, -6, 0xb48a5c, "");
+
+      // 6. Test Points & Silkscreen text
+      buildTestPoint(pcbGroup, -20, boardThick/2, 0, "IN");
+      buildTestPoint(pcbGroup, 20, boardThick/2, 0, "OUT");
+    }
+
+    // Helper: Build SOIC-8 IC
+    function buildSOIC8(group, x, y, z) {
+      const icBodyGeo = new THREE.BoxGeometry(6.0, 1.8, 4.8);
+      const icMat = new THREE.MeshStandardMaterial({ color: 0x1f2937, roughness: 0.6 });
+      const ic = new THREE.Mesh(icBodyGeo, icMat);
+      ic.position.set(x, y + 0.9, z);
+      ic.castShadow = true;
+      group.add(ic);
+
+      // Pin 1 dot indicator
+      const dotGeo = new THREE.CylinderGeometry(0.3, 0.3, 0.05, 16);
+      const dotMat = new THREE.MeshBasicMaterial({ color: 0x64748b });
+      const dot = new THREE.Mesh(dotGeo, dotMat);
+      dot.position.set(x - 2.2, y + 1.83, z - 1.6);
+      group.add(dot);
+
+      // 8 Metal Gull-wing Pins
+      const pinMat = new THREE.MeshStandardMaterial({ color: 0xd1d5db, metalness: 0.95, roughness: 0.1 });
+      const pinGeo = new THREE.BoxGeometry(0.7, 0.3, 1.2);
+      for(let i = 0; i < 4; i++) {
+        const pinZ = z - 1.8 + i * 1.2;
+        // Left pin
+        const pL = new THREE.Mesh(pinGeo, pinMat);
+        pL.position.set(x - 3.4, y + 0.2, pinZ);
+        group.add(pL);
+        // Right pin
+        const pR = new THREE.Mesh(pinGeo, pinMat);
+        pR.position.set(x + 3.4, y + 0.2, pinZ);
+        group.add(pR);
+      }
+    }
+
+    // Helper: Build SMD 0805 Resistor / Capacitor
+    function buildSMD0805(group, x, y, z, bodyColor, label) {
+      const bodyGeo = new THREE.BoxGeometry(2.0, 0.9, 1.25);
+      const bodyMat = new THREE.MeshStandardMaterial({ color: bodyColor, roughness: 0.4 });
+      const body = new THREE.Mesh(bodyGeo, bodyMat);
+      body.position.set(x, y + 0.45, z);
+      body.castShadow = true;
+      group.add(body);
+
+      // Silver Terminals (Pads)
+      const termGeo = new THREE.BoxGeometry(0.4, 0.92, 1.27);
+      const termMat = new THREE.MeshStandardMaterial({ color: 0xe2e8f0, metalness: 0.9, roughness: 0.15 });
+      const t1 = new THREE.Mesh(termGeo, termMat);
+      t1.position.set(x - 0.9, y + 0.45, z);
+      const t2 = new THREE.Mesh(termGeo, termMat);
+      t2.position.set(x + 0.9, y + 0.45, z);
+      group.add(t1);
+      group.add(t2);
+    }
+
+    // Helper: Test Point Pad
+    function buildTestPoint(group, x, y, z, label) {
+      const tpGeo = new THREE.CylinderGeometry(1.2, 1.2, 0.08, 20);
+      const tpMat = new THREE.MeshStandardMaterial({ color: 0xd4af37, metalness: 0.95, roughness: 0.15 });
+      const tp = new THREE.Mesh(tpGeo, tpMat);
+      tp.position.set(x, y + 0.04, z);
+      group.add(tp);
+    }
+
+    // Initial build
+    buildPCB(pcbColor);
+
+    // --- Interaction & Event Handlers ---
+    // Solder mask color switcher
+    document.querySelectorAll('.swatch').forEach(sw => {
+      sw.addEventListener('click', (e) => {
+        document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+        sw.classList.add('active');
+        const color = parseInt(sw.getAttribute('data-color').replace('#', '0x'));
+        buildPCB(color);
+      });
+    });
+
+    // Circuit Topology switcher
+    const topoSelect = document.getElementById('topology-select');
+    const valFc = document.getElementById('val-fc');
+    const bomList = document.getElementById('bom-list');
+
+    topoSelect.addEventListener('change', () => {
+      const val = topoSelect.value;
+      if (val === 'sallen_key') {
+        valFc.textContent = "100.0 Hz";
+        bomList.innerHTML = "• U1: OPA1612 (SOIC-8)<br>• R1, R2: 10.0 kΩ 1% (0805)<br>• C1: 220 nF (0805 SMD)<br>• C2: 100 nF (0805 SMD)";
+      } else if (val === 'twin_t') {
+        valFc.textContent = "50.0 Hz Notch";
+        bomList.innerHTML = "• U1: TL072 (SOIC-8)<br>• R1, R2: 15.8 kΩ 1% (0805)<br>• R3: 7.87 kΩ (0805)<br>• C1, C2: 200 nF (0805)<br>• C3: 400 nF (0805)";
+      } else {
+        valFc.textContent = "Gain: 100x";
+        bomList.innerHTML = "• U1: AD620BRZ (SOIC-8)<br>• Rg: 499 Ω 1% E96 (0805)<br>• C_bypass: 100 nF (0805)<br>• R_pull: 10 kΩ (0805)";
+      }
+      buildPCB(pcbColor);
+    });
+
+    // Auto-rotation toggle
+    let autoRotate = true;
+    document.getElementById('btn-autorotate').addEventListener('click', () => {
+      autoRotate = !autoRotate;
+    });
+
+    // KiCad Netlist download trigger
+    document.getElementById('btn-export-kicad').addEventListener('click', () => {
+      const netlistContent = `(export (version D)
+  (design
+    (source "circuit_design_anything_3d.sch")
+    (date "${new Date().toISOString()}")
+    (tool "Circuit Design Anything (CDA) v0.1.0")
+  )
+  (components
+    (comp (ref U1) (value OPA1612) (footprint Package_SO:SOIC-8_3.9x4.9mm_P1.27mm))
+    (comp (ref R1) (value 10k) (footprint Resistor_SMD:R_0805_2012Metric))
+    (comp (ref R2) (value 10k) (footprint Resistor_SMD:R_0805_2012Metric))
+    (comp (ref C1) (value 220n) (footprint Capacitor_SMD:C_0805_2012Metric))
+    (comp (ref C2) (value 100n) (footprint Capacitor_SMD:C_0805_2012Metric))
+  )
+)`;
+      const blob = new Blob([netlistContent], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${topoSelect.value}_manufacture.net`;
+      a.click();
+    });
+
+    // Resize Handler
+    window.addEventListener('resize', () => {
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(container.clientWidth, container.clientHeight);
+    });
+
+    // --- Animation Loop ---
+    function animate() {
+      requestAnimationFrame(animate);
+      if (autoRotate) {
+        pcbGroup.rotation.y += 0.005;
+      }
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+  </script>
+</body>
+</html>
